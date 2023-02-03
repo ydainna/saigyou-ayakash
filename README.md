@@ -14,9 +14,10 @@ Finally there is also a wish list or for future purchases
 
 ## Installation
 
-To use the project you will need **yarn** :
+To use the project you will need **yarn** and **turbo**:
 ```bash
 npm install --global yarn
+npm install --global turbo
 ```
 
 To install the project you just have to run (in the root) :
