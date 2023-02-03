@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "@saigyou-ayakash/back",
   "version": "1.0.0",
   "main": "dist/main.js",
   "license": "MIT",
