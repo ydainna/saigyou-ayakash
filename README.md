@@ -60,7 +60,7 @@ yarn build
 ## Commands for clean this project
 Client : 
 ```bash
-yarn clean front
+yarn clean
 ```
 
 **clean** delete **node_modules** (front/back) and dist (front/back)
