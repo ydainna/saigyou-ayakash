@@ -21,23 +21,39 @@ npm install --global yarn
 
 To install the project you just have to run (in the root) :
 ```bash
-yarn setup
+yarn install
 ```
     
 ## Commands for run this project
 Client : 
 ```bash
-yarn client
+yarn dev front
 ```
 
 Server :
 ```bash
-yarn server
+yarn dev back
 ```
 
 Client and Server :
 ```bash
 yarn dev
+```
+
+## Commands for build this project
+Client : 
+```bash
+yarn build front
+```
+
+Server :
+```bash
+yarn build back
+```
+
+Client and Server :
+```bash
+yarn build
 ```
 
 ## Environment Variables
