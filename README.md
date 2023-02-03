@@ -82,6 +82,10 @@ To **run this project**, you will **need** to add the following environment vari
 
 ## Dependencies
 
+Template dependencies :
+- [turbo](https://turbo.build/repo)
+- [cross-env](https://github.com/kentcdodds/cross-env)
+
 Client dependencies :
 - [typescript](https://www.typescriptlang.org/)
 - [react](https://fr.reactjs.org/)
@@ -115,7 +119,6 @@ Server dependencies :
 ## Authors
 
 - [@ydainna](https://www.github.com/ydainna)
-
 
 ## License
 
