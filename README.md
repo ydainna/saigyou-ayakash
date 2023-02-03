@@ -58,7 +58,6 @@ yarn build
 ```
 
 ## Commands for clean this project
-Client : 
 ```bash
 yarn clean
 ```

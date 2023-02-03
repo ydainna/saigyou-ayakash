@@ -24,6 +24,7 @@ export namespace Database {
       log.error("Disconnected!");
     });
 
+    mongoose.set("strictQuery", true);
     await mongoose.connect(process.env.MONGODB_URL as string);
   }
 }
