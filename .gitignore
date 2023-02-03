@@ -1,4 +1,6 @@
 node_modules/
+db/
+apps/back/public/img/
 .turbo/
 .env
 dist/
