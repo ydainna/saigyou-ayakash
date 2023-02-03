@@ -57,6 +57,14 @@ Client and Server :
 yarn build
 ```
 
+## Commands for clean this project
+Client : 
+```bash
+yarn clean front
+```
+
+**clean** delete **node_modules** (front/back) and dist (front/back)
+
 ## Environment Variables
 
 To **run this project**, you will **need** to add the following environment variables to your **.env file**
