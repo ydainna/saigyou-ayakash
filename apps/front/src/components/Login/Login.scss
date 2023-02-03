@@ -1,0 +1,18 @@
+@import "./../../assets/styles/variables";
+
+.loginBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+  background-color: $loginBoxBackgroundColor;
+  border-radius: 0.37rem;
+  padding: 1.87rem;
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  .loginInput {
+    margin-bottom: 1rem;
+  }
+}

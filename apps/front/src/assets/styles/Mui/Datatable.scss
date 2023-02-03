@@ -1,0 +1,30 @@
+@import "./../variables";
+
+.MuiTableCell-root {
+  &.MuiTableCell-head {
+    border-bottom: $datatableCellHeadBorderBottom;
+    color: $datatableCellHeadColor;
+  }
+  &.MuiTableCell-body {
+    color: $datatableCellBodyColor;
+    border-bottom: $datatableCellBodyBorderBottom;
+  }
+}
+
+.MuiToolbar-root {
+  .MuiTablePagination-selectLabel {
+    color: $datatablePaginationSelectLabelColor;
+  }
+  .MuiTablePagination-select {
+    color: $datatablePaginationSelectColor;
+  }
+  .MuiTablePagination-displayedRows {
+    color: $datatablePaginationDisplayRowsColor;
+  }
+  .MuiTablePagination-actions {
+    color: $datatablePaginationActionsColor;
+  }
+  .MuiTablePagination-selectIcon {
+    color: $datatablePaginationSelectIconColor;
+  }
+}

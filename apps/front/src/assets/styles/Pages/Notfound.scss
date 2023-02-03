@@ -1,0 +1,20 @@
+@import "./../variables";
+
+.notfound {
+  @media screen and (min-width: 451px) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .notfound-body {
+    justify-content: baseline;
+    padding: 1.87rem;
+    margin: 1.25rem;
+    border-radius: 0.37rem;
+    background-color: $cardBackgroundColor;
+    .notfound-text {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

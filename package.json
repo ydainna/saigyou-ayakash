@@ -1,0 +1,22 @@
+{
+  "name": "saigyou-ayakash",
+  "description": "monorepo for saigyou-ayakash",
+  "license": "UNLICENSED",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "cross-env FORCE_COLOR=1 turbo run build --no-daemon",
+    "build:front": "cross-env FORCE_COLOR=1 turbo run build --filter=@saigyou-ayakash/front --no-daemon",
+    "build:back": "cross-env FORCE_COLOR=1 turbo run build --filter=@saigyou-ayakash/back --no-daemon",
+    "dev": "cross-env FORCE_COLOR=1 turbo run dev --no-cache --parallel --no-daemon",
+    "dev:front": "cross-env FORCE_COLOR=1 turbo run dev --filter=@saigyou-ayakash/front --no-cache --parallel --no-daemon",
+    "dev:back": "cross-env FORCE_COLOR=1 turbo run dev --filter=@saigyou-ayakash/back --no-cache --parallel --no-daemon",
+    "clean": "cross-env FORCE_COLOR=1 turbo run clean --no-daemon"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "turbo": "^1.7.2"
+  }
+}

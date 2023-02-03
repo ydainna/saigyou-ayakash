@@ -1,0 +1,62 @@
+@import "./../../assets/styles/variables";
+
+.statistic {
+  @media screen and (min-width: 451px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.statistic-body {
+  padding: 1.87rem;
+  margin: 1.25rem;
+  border-radius: 0.37rem;
+  background-color: $cardBackgroundColor;
+  @media screen and (min-width: 451px) {
+    padding: 1.87rem;
+    margin: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1020px) {
+    width: 33%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 25%;
+  }
+}
+
+.statistic-title {
+  color: $statisticTitleColor;
+}
+
+.statistic-prefix {
+  display: inline-block;
+  margin: 4px;
+}
+
+.statistic-icon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  height: 2em;
+  width: 2em;
+  margin-right: 4px;
+}
+
+.statistic-content-value {
+  display: inline-block;
+  direction: ltr;
+}
+
+.statistic-content-value-int {
+  color: $statisticContentValueIntColor;
+}

@@ -1,0 +1,14 @@
+@import "./../../assets/styles/variables";
+
+.wishlist-info-body {
+  padding: 1.87rem;
+  margin: 1.25rem;
+  border-radius: 0.37rem;
+  background-color: $cardBackgroundColor;
+  @media screen and (min-width: 451px) {
+    padding: 1.87rem;
+    margin: 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
