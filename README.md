@@ -115,6 +115,8 @@ Server dependencies :
 - [moment](https://momentjs.com/)
 - [moment-timezone](https://momentjs.com/timezone/)
 - [uuid](https://github.com/uuidjs/uuid)
+- [cross-env](https://github.com/kentcdodds/cross-env)
+
 ## Authors
 
 - [@ydainna](https://www.github.com/ydainna)
