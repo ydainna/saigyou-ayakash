@@ -9,6 +9,8 @@ import { notify } from "@components/layout-components/Notification/Notification"
 import { AuthContext } from "./../../auth/AuthContext";
 import "@assets/styles/Mui/Datatable.scss";
 import { globalStateProxy } from "../../App";
+import Loader from "@components/layout-components/Loader/Loader";
+import Subtitle from "@components/layout-components/Typography/Subtitle";
 
 type DataTypes = {
   uuid: string;
@@ -77,53 +79,71 @@ export default function WishlistDataTable() {
           Ajouter
         </Button>
       )}
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Lien</TableCell>
-              <TableCell>Nom</TableCell>
-              <TableCell>Origine</TableCell>
-              <TableCell>Version</TableCell>
-              <TableCell>Fabricant</TableCell>
-              <TableCell>Date d'ajout</TableCell>
-              <TableCell>Prix</TableCell>
-              {isLogin && <TableCell>Actions</TableCell>}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: DataTypes) => {
-              return (
-                <TableRow hover key={row.uuid}>
-                  <TableCell>
-                    <Button startIcon={<FcLink />} onClick={() => window.open(`${row.link}`, "_blank")}>
-                      Lien
-                    </Button>
-                  </TableCell>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.origin}</TableCell>
-                  <TableCell>{row.version}</TableCell>
-                  <TableCell>{row.maker}</TableCell>
-                  <TableCell>{moment(row.date).format("DD/MM/YYYY")}</TableCell>
-                  <TableCell>{row.price} €</TableCell>
-                  {isLogin && (
-                    <TableCell>
-                      <Button color="error" onClick={() => handleDelete(row.uuid)} startIcon={<FcFullTrash />}>
-                        Supprimer
-                      </Button>
-                    </TableCell>
-                  )}
+      {isLoading ? (
+        <div className="loading">
+          <Loader loaderType="loading" className="figure-loading" />
+          <div className="loading-text">
+            <Subtitle variant="subtitle1" content="Chargement des données..." />
+          </div>
+        </div>
+      ) : error ? (
+        <div className="loading">
+          <Loader loaderType="error" className="figure-error" />
+          <div className="loading-text">
+            <Subtitle variant="subtitle1" content="Erreur lors du chargement des données" />
+          </div>
+        </div>
+      ) : (
+        <>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Lien</TableCell>
+                  <TableCell>Nom</TableCell>
+                  <TableCell>Origine</TableCell>
+                  <TableCell>Version</TableCell>
+                  <TableCell>Fabricant</TableCell>
+                  <TableCell>Date d'ajout</TableCell>
+                  <TableCell>Prix</TableCell>
+                  {isLogin && <TableCell>Actions</TableCell>}
                 </TableRow>
-              );
-            })}
-            {emptyRows > 0 && (
-              <TableRow>
-                <TableCell colSpan={5} />
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+              </TableHead>
+              <TableBody>
+                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: DataTypes) => {
+                  return (
+                    <TableRow hover key={row.uuid}>
+                      <TableCell>
+                        <Button startIcon={<FcLink />} onClick={() => window.open(`${row.link}`, "_blank")}>
+                          Lien
+                        </Button>
+                      </TableCell>
+                      <TableCell>{row.name}</TableCell>
+                      <TableCell>{row.origin}</TableCell>
+                      <TableCell>{row.version}</TableCell>
+                      <TableCell>{row.maker}</TableCell>
+                      <TableCell>{moment(row.date).format("DD/MM/YYYY")}</TableCell>
+                      <TableCell>{row.price} €</TableCell>
+                      {isLogin && (
+                        <TableCell>
+                          <Button color="error" onClick={() => handleDelete(row.uuid)} startIcon={<FcFullTrash />}>
+                            Supprimer
+                          </Button>
+                        </TableCell>
+                      )}
+                    </TableRow>
+                  );
+                })}
+                {emptyRows > 0 && (
+                  <TableRow>
+                    <TableCell colSpan={5} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
+      )}
       <TablePagination
         rowsPerPageOptions={[10, 15, 35]}
         component="div"
