@@ -39,10 +39,6 @@ export default function WishlistDataTable() {
   });
   globalStateProxy.refetchWishes = refetch;
 
-  if (isLoading) return <span>Loading...</span>;
-
-  if (error) return <span>An error has occurred</span>;
-
   const handleDelete = (uuid: string) => {
     wishlistService
       .delete(uuid)
@@ -142,17 +138,17 @@ export default function WishlistDataTable() {
               </TableBody>
             </Table>
           </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 15, 35]}
+            component="div"
+            count={data.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
         </>
       )}
-      <TablePagination
-        rowsPerPageOptions={[10, 15, 35]}
-        component="div"
-        count={data.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
       <AddWish isAddWishOpen={isAddWishOpen} setAddWishOpen={setAddWishOpen} />
     </>
   );

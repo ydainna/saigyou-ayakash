@@ -28,12 +28,12 @@ yarn install
 ## Commands for run this project
 Client : 
 ```bash
-yarn dev front
+yarn dev:front
 ```
 
 Server :
 ```bash
-yarn dev back
+yarn dev:back
 ```
 
 Client and Server :
@@ -44,12 +44,12 @@ yarn dev
 ## Commands for build this project
 Client : 
 ```bash
-yarn build front
+yarn build:front
 ```
 
 Server :
 ```bash
-yarn build back
+yarn build:back
 ```
 
 Client and Server :
