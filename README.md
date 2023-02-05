@@ -85,7 +85,7 @@ Template dependencies :
 - [turbo](https://turbo.build/repo)
 - [cross-env](https://github.com/kentcdodds/cross-env)
 
-Client dependencies :
+Front dependencies :
 - [typescript](https://www.typescriptlang.org/)
 - [react](https://fr.reactjs.org/)
 - [vitejs](https://vitejs.dev/)
@@ -100,10 +100,11 @@ Client dependencies :
 - [react-toastify](https://fkhadra.github.io/react-toastify/introduction)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-mui-fileuploader](https://github.com/rouftom/react-mui-fileuploader)
+- [jwt-decode](https://github.com/auth0/jwt-decode)
 
 ## 
 
-Server dependencies :
+Back dependencies :
 - [typescript](https://www.typescriptlang.org/)
 - [node](https://nodejs.org/en/)
 - [HAPI and plugins](https://hapi.dev/)
