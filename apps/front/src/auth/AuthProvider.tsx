@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { AuthContext, AuthContextValue } from "./AuthContext";
+import jwtDecode from "jwt-decode";
 import { constants } from "@utils/constants";
 
 type TypesAuthProvider = {
@@ -18,6 +19,14 @@ export default function AuthProvider({ children }: TypesAuthProvider) {
     },
     []
   );
+
+  const user = useMemo(() => {
+    const token = localStorage.getItem(constants.AUTH_TOKEN_KEY);
+    if (token) {
+      const { displayName }: any = jwtDecode(token);
+      return displayName;
+    }
+  }, []);
 
   const logout = useMemo(
     () => () => {
@@ -41,6 +50,7 @@ export default function AuthProvider({ children }: TypesAuthProvider) {
     token,
     login,
     logout,
+    user,
     isLogin,
   };
 
