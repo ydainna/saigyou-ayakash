@@ -2,9 +2,10 @@ import { useState, useContext } from "react";
 import { Logout } from "@mui/icons-material";
 import { Avatar, IconButton, ListItemIcon, Menu, MenuItem, styled } from "@mui/material";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
+import jwtDecode from "jwt-decode";
+import { constants } from "@utils/constants";
 import { AuthContext } from "./../../../auth/AuthContext";
 import elephant from "./../../../assets/img/elephant.svg";
-import Subtitle from "../Typography/Subtitle";
 
 const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tooltip {...props} arrow classes={{ popper: className }} />)(
   ({ theme }) => ({
@@ -22,6 +23,7 @@ export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const { logout } = useContext(AuthContext);
+  const { displayName }: any = jwtDecode(localStorage.getItem(constants.AUTH_TOKEN_KEY) || "");
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -33,7 +35,7 @@ export default function AccountMenu() {
 
   return (
     <>
-      <BootstrapTooltip title="Mon compte" placement="bottom">
+      <BootstrapTooltip title={`Mon compte (${displayName})`} placement="bottom">
         <IconButton
           onClick={handleClick}
           size="small"

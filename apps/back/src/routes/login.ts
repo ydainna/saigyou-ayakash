@@ -36,6 +36,7 @@ export const initLoginRoutes = async (server: Server) => {
           iss: process.env.JWT_ISSUER || "",
           exp: Math.floor(Date.now() / 1000) + 604800,
           displayName: user.displayName,
+          avatar: user.avatar,
         },
         process.env.JWT_SECRET || ""
       );

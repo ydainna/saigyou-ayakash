@@ -5,6 +5,7 @@ interface IUser {
   username: string;
   password: string;
   displayName: string;
+  avatar: string;
 }
 
 // User schema

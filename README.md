@@ -68,10 +68,10 @@ yarn clean
 
 To **run this project**, you will **need** to add the following environment variables to your **.env file**
 
-**client** :
+**front** :
 `VITE_API_BASE_URL`
 
-**server** :
+**back** :
 `JWT_ISSUER`
 `JWT_SECRET`
 `MONGODB_URL`
