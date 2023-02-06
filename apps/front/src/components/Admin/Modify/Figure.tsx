@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
-import "./../Admin.scss";
-import "@assets/styles/Mui/Input.scss";
 import figureService from "@services/FigureService";
 import { getLogger } from "@utils/getLogger";
 import { notify } from "@components/layout-components/Notification/Notification";
+import "./../Admin.scss";
+import "@assets/styles/Mui/Input.scss";
 
 type ModifyFigureDataTypes = {
   uuid: string;

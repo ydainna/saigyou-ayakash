@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
 import FileUpload from "react-mui-fileuploader";
 import moment from "moment";
-import "./../Admin.scss";
-import "@assets/styles/Mui/Input.scss";
 import figureService from "@services/FigureService";
 import { getLogger } from "@utils/getLogger";
 import { notify } from "@components/layout-components/Notification/Notification";
 import { globalStateProxy } from "../../../App";
+import "./../Admin.scss";
+import "@assets/styles/Mui/Input.scss";
 
 type AddFigureTypes = {
   isAddFigureOpen: boolean;

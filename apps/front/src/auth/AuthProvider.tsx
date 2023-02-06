@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
-import { AuthContext, AuthContextValue } from "./AuthContext";
 import jwtDecode from "jwt-decode";
+import { AuthContext, AuthContextValue } from "./AuthContext";
 import { constants } from "@utils/constants";
 
 type TypesAuthProvider = {
@@ -25,6 +25,8 @@ export default function AuthProvider({ children }: TypesAuthProvider) {
     if (token) {
       const { displayName }: any = jwtDecode(token);
       return displayName;
+    } else {
+      return undefined;
     }
   }, []);
 

@@ -4,9 +4,9 @@ import moment from "moment";
 import wishlistService from "@services/WishlistService";
 import { notify } from "@components/layout-components/Notification/Notification";
 import { getLogger } from "@utils/getLogger";
+import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
 import "@assets/styles/Mui/Input.scss";
-import { globalStateProxy } from "../../../App";
 
 type AddWishTypes = {
   isAddWishOpen: boolean;
