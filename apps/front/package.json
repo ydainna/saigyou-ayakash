@@ -28,7 +28,7 @@
     "react-mui-fileuploader": "^0.5.2",
     "react-router-dom": "^6.8.0",
     "react-toastify": "^9.1.1",
-    "tslog": "^4.7.1",
+    "tslog": "^4.7.2",
     "valtio": "^1.10.0"
   },
   "devDependencies": {
