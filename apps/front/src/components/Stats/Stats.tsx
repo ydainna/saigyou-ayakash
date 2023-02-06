@@ -59,7 +59,7 @@ export default function Stats() {
                   ) : error ? (
                     <Subtitle variant="subtitle1" content="Erreur lors du chargement des données" />
                   ) : (
-                    <Subtitle variant="subtitle1" content={data?.totalPrice} />
+                    <Subtitle variant="subtitle1" content={data?.totalPrice.toFixed(2)} />
                   )}
                 </span>
               </span>
