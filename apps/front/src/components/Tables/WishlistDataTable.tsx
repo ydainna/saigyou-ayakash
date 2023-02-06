@@ -118,7 +118,7 @@ export default function WishlistDataTable() {
                       <TableCell>{row.origin}</TableCell>
                       <TableCell>{row.version}</TableCell>
                       <TableCell>{row.maker}</TableCell>
-                      <TableCell>{moment(row.date).format("DD/MM/YYYY")}</TableCell>
+                      <TableCell>{moment(new Date(row.date)).format("DD/MM/YYYY")}</TableCell>
                       <TableCell>{row.price} €</TableCell>
                       {isLogin && (
                         <TableCell>

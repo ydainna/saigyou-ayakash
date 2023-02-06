@@ -117,7 +117,7 @@ export default function Stats() {
                   ) : error ? (
                     <Subtitle variant="subtitle1" content="Erreur lors du chargement des données" />
                   ) : (
-                    <Subtitle variant="subtitle1" content={moment(data?.lastDate).format("DD/MM/YYYY")} />
+                    <Subtitle variant="subtitle1" content={moment(new Date(data?.lastDate)).format("DD/MM/YYYY")} />
                   )}
                 </span>
               </span>

@@ -19,7 +19,6 @@ import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { FcSearch, FcPlus, FcFullTrash, FcEditImage } from "react-icons/fc";
 import moment from "moment";
 import Lightbox from "@components/layout-components/Lightbox/Lightbox";
-import { notify } from "@components/layout-components/Notification/Notification";
 import figureService from "@services/FigureService";
 import AddFigure from "./../Admin/Add/Figure";
 import ModifyFigure from "./../Admin/Modify/Figure";
@@ -199,7 +198,7 @@ export default function FigureDataTable() {
                       <TableCell>{row.origin}</TableCell>
                       <TableCell>{row.version}</TableCell>
                       <TableCell>{row.maker}</TableCell>
-                      <TableCell>{moment(row.date).format("MM/DD/YYYY")}</TableCell>
+                      <TableCell>{moment(new Date(row.date)).format("DD/MM/YYYY")}</TableCell>
                       <TableCell>{row.price} €</TableCell>
                       {isLogin && (
                         <TableCell>
