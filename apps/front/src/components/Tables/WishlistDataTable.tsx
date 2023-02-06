@@ -56,7 +56,7 @@ export default function WishlistDataTable() {
     setAddWishOpen(true);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 

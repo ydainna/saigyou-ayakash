@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mui/material";
 import { FcManager, FcKey } from "react-icons/fc";
 import { getLogger } from "@utils/getLogger";
@@ -14,7 +14,6 @@ type LoginTypes = {
 };
 
 export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
-  const [error, setError] = useState<boolean>(false);
   const { login } = useContext(AuthContext);
 
   const handleLoginClose = () => {
@@ -36,7 +35,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
       })
       .catch((error: Error) => {
         log.error(error);
-        setError(true);
         notify.error("Nom de compte ou mot de passe incorrect");
       });
   };
@@ -56,7 +54,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <InputLabel htmlFor="account-name">Nom de compte</InputLabel>
             <Input
               id="account-name"
-              error={error ? true : false}
               className="loginInput"
               placeholder="Alice Synthesis Thirty"
               name="username"
@@ -69,7 +66,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <InputLabel htmlFor="account-pass">Mot de passe</InputLabel>
             <Input
               id="account-pass"
-              error={error ? true : false}
               className="loginInput"
               placeholder="********"
               name="password"

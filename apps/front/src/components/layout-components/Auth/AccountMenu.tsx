@@ -2,8 +2,6 @@ import { useState, useContext } from "react";
 import { Logout } from "@mui/icons-material";
 import { Avatar, IconButton, ListItemIcon, Menu, MenuItem, styled } from "@mui/material";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import jwtDecode from "jwt-decode";
-import { constants } from "@utils/constants";
 import { AuthContext } from "./../../../auth/AuthContext";
 import elephant from "./../../../assets/img/elephant.svg";
 
