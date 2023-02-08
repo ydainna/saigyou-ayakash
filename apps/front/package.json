@@ -29,7 +29,7 @@
     "react-router-dom": "^6.8.1",
     "react-toastify": "^9.1.1",
     "tslog": "^4.7.2",
-    "valtio": "^1.10.0"
+    "valtio": "^1.10.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.19",
