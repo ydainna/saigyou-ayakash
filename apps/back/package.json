@@ -12,7 +12,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@hapi/boom": "^10.0.0",
+    "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.2.1",
     "@hapi/hoek": "^11.0.2",
     "@hapi/inert": "^7.0.0",
