@@ -13,6 +13,7 @@
     "dev": "cross-env FORCE_COLOR=1 turbo run dev --no-cache --parallel --no-daemon",
     "dev:front": "cross-env FORCE_COLOR=1 turbo run dev --filter=@saigyou-ayakash/front --no-cache --parallel --no-daemon",
     "dev:back": "cross-env FORCE_COLOR=1 turbo run dev --filter=@saigyou-ayakash/back --no-cache --parallel --no-daemon",
+    "start:back": "cross-env FORCE_COLOR=1 turbo run start --filter=@saigyou-ayakash/back --no-daemon",
     "clean": "cross-env FORCE_COLOR=1 turbo run clean --no-daemon"
   },
   "devDependencies": {

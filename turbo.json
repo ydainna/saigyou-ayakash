@@ -7,6 +7,9 @@
     "clean": {
       "cache": false
     },
+    "start": {
+      "cache": false
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
