@@ -10,8 +10,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
     "@lottiefiles/react-lottie-player": "^3.5.2",
     "@mui/icons-material": "^5.11.9",
@@ -38,8 +38,8 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
     "rimraf": "^4.1.2",
-    "sass": "^1.58.1",
+    "sass": "^1.58.2",
     "typescript": "^4.9.5",
-    "vite": "^4.1.1"
+    "vite": "^4.1.2"
   }
 }
