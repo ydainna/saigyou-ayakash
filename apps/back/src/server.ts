@@ -22,7 +22,7 @@ export const init = async (): Promise<Server> => {
     routes: {
       cors: {
         origin: process.env.NODE_ENV === "dev" ? ["*"] : ["https://saigyou-ayakash.com"],
-        //additionalHeaders: ["X-Public-Request", "Content-Type", "Origin", "Authorization", "Cache-Control"],
+        additionalHeaders: ["X-Public-Request", "Content-Type", "Origin", "Authorization", "Cache-Control"],
       },
     },
   });
