@@ -23,8 +23,6 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-console.log("Environment: ", import.meta.env.MODE);
-
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <QueryClientProvider client={new QueryClient()}>
     <StyledEngineProvider injectFirst>
