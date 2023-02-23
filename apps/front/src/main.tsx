@@ -18,10 +18,12 @@ const darkTheme = createTheme({
 });
 
 Sentry.init({
-  dsn: import.meta.env.VITE_SENTRY_DSN,
+  dsn: "https://ab3fd8e9bbdf47eaace4c1fd5b4c533b@o4504728954470400.ingest.sentry.io/4504728956436480",
   integrations: [new BrowserTracing()],
   tracesSampleRate: 1.0,
 });
+
+console.log("Environment: ", import.meta.env.MODE);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <QueryClientProvider client={new QueryClient()}>
