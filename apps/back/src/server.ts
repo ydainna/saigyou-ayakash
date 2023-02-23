@@ -2,6 +2,8 @@ import Hapi from "@hapi/hapi";
 import { Server } from "@hapi/hapi";
 import { getLogger } from "./utils/getLogger";
 import { Database } from "./database/mongo";
+import * as Sentry from "@sentry/node";
+import * as Tracing from "@sentry/tracing";
 //routes
 import { initFiguresRoutes } from "./routes/figures";
 import { initLoginRoutes } from "./routes/login";
@@ -42,6 +44,15 @@ export const init = async (): Promise<Server> => {
 
   // Connect to database
   await Database.connect();
+
+  Sentry.init({
+    dsn: "https://cebb6018536749e08fbaa19b0e501208@o4504728954470400.ingest.sentry.io/4504730904625152",
+
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  });
 
   return server;
 };
