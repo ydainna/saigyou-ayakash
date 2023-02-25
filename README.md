@@ -101,6 +101,7 @@ Front dependencies :
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-mui-fileuploader](https://github.com/rouftom/react-mui-fileuploader)
 - [jwt-decode](https://github.com/auth0/jwt-decode)
+- [sentry](https://sentry.io)
 
 ## 
 
@@ -117,6 +118,7 @@ Back dependencies :
 - [moment-timezone](https://momentjs.com/timezone/)
 - [uuid](https://github.com/uuidjs/uuid)
 - [cross-env](https://github.com/kentcdodds/cross-env)
+- [sentry](https://sentry.io)
 
 ## Authors
 
