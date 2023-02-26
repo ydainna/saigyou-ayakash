@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastContainer } from "react-toastify";
 import App from "./App";
 import AuthProvider from "./auth/AuthProvider";
+import { constants } from "@utils/constants";
 import "./index.scss";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -18,7 +19,7 @@ const darkTheme = createTheme({
 });
 
 Sentry.init({
-  dsn: "https://ab3fd8e9bbdf47eaace4c1fd5b4c533b@o4504728954470400.ingest.sentry.io/4504728956436480",
+  dsn: constants.SENTRY_DSN as string,
   integrations: [new BrowserTracing()],
   tracesSampleRate: 1.0,
 });
