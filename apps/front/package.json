@@ -31,7 +31,7 @@
     "react-router-dom": "^6.8.2",
     "react-toastify": "^9.1.1",
     "tslog": "^4.7.5",
-    "valtio": "^1.10.2"
+    "valtio": "^1.10.3"
   },
   "devDependencies": {
     "@types/node": "^18.14.1",
