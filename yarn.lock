@@ -934,26 +934,6 @@
     "@sentry/utils" "7.41.0"
     tslib "^1.9.3"
 
-"@sentry/tracing@^7.41.0":
-  version "7.41.0"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.41.0.tgz#28f57667a13b95cb8bce5af0809e7727b645e6b7"
-  integrity sha512-zh1ceuwQ8NzE5n8r4y78QrYD/alJl4qlkiEX9lAL6PnLMWJkVWM02BBu+x75yPFWSSDfDA/kZ9WqKkHNdjGpDw==
-  dependencies:
-    "@sentry/core" "7.41.0"
-    "@sentry/types" "7.41.0"
-    "@sentry/utils" "7.41.0"
-    tslib "^1.9.3"
-
-"@sentry/tracing@^7.41.0":
-  version "7.41.0"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.41.0.tgz#28f57667a13b95cb8bce5af0809e7727b645e6b7"
-  integrity sha512-zh1ceuwQ8NzE5n8r4y78QrYD/alJl4qlkiEX9lAL6PnLMWJkVWM02BBu+x75yPFWSSDfDA/kZ9WqKkHNdjGpDw==
-  dependencies:
-    "@sentry/core" "7.41.0"
-    "@sentry/types" "7.41.0"
-    "@sentry/utils" "7.41.0"
-    tslib "^1.9.3"
-
 "@sentry/types@7.40.0":
   version "7.40.0"
   resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.40.0.tgz#27b012b59d593132e413018773f0a045d68075d7"
@@ -1040,12 +1020,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^18.14.5":
-  version "18.14.5"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.14.5.tgz#4a13a6445862159303fc38586598a9396fc408b3"
-  integrity sha512-CRT4tMK/DHYhw1fcCEBwME9CSaZNclxfzVMe7GsO6ULSwsttbj70wSiX6rZdIjGblu93sTJxLdhNIT85KKI7Qw==
-
-"@types/node@^18.14.6":
+"@types/node@*", "@types/node@^18.14.6":
   version "18.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.14.6.tgz#ae1973dd2b1eeb1825695bb11ebfb746d27e3e93"
   integrity sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==
@@ -2465,13 +2440,6 @@ resolve@^1.10.0, resolve@^1.19.0, resolve@^1.22.1:
     is-core-module "^2.9.0"
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
-
-rimraf@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-4.3.1.tgz#ccb3525e39100478acb334fae6d23029b87912ea"
-  integrity sha512-GfHJHBzFQra23IxDzIdBqhOWfbtdgS1/dCHrDy+yvhpoJY5TdwdT28oWaHWfRpKFDLd3GZnGTx6Mlt4+anbsxQ==
-  dependencies:
-    glob "^9.2.0"
 
 rimraf@^4.3.1:
   version "4.3.1"
