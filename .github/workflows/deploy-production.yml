@@ -20,6 +20,6 @@ jobs:
             cd /root/Docker/web/saigyou-ayakash
             git pull
             yarn clean
-            yarn install
+            yarn install --frozen-lockfile
             yarn build
             docker restart web-api
