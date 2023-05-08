@@ -10,7 +10,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
+    "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.10.8",
     "@fontsource/roboto": "^4.5.8",
     "@lottiefiles/react-lottie-player": "^3.5.3",
