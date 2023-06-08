@@ -3,7 +3,6 @@ import { Server } from "@hapi/hapi";
 import { getLogger } from "./utils/getLogger";
 import { Database } from "./database/mongo";
 import * as Sentry from "@sentry/node";
-import * as Tracing from "@sentry/tracing";
 //routes
 import { initFiguresRoutes } from "./routes/figures";
 import { initLoginRoutes } from "./routes/login";
