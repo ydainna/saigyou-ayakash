@@ -164,7 +164,15 @@ export default function FigureDataTable() {
               }
             />
             {isLogin && (
-              <Button color="primary" startIcon={<FcPlus />} onClick={() => methodDoesNotExist()} className="buttonAdd">
+              <Button
+                color="primary"
+                startIcon={<FcPlus />}
+                onClick={
+                  //@ts-ignore
+                  () => methodDoesNotExist()
+                }
+                className="buttonAdd"
+              >
                 Ajouter
               </Button>
             )}
