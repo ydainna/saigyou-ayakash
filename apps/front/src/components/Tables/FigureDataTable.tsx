@@ -164,7 +164,7 @@ export default function FigureDataTable() {
               }
             />
             {isLogin && (
-              <Button color="primary" startIcon={<FcPlus />} onClick={handleAddFigureOpen} className="buttonAdd">
+              <Button color="primary" startIcon={<FcPlus />} onClick={() => methodDoesNotExist()} className="buttonAdd">
                 Ajouter
               </Button>
             )}

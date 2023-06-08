@@ -21,7 +21,7 @@ Sentry.init({
   dsn: constants.SENTRY_DSN as string,
   integrations: [
     new Sentry.BrowserTracing({
-      tracePropagationTargets: ["all"],
+      tracePropagationTargets: ["prod", /^https:\/\/api.saigyou-ayakash\.com/],
     }),
     new Sentry.Replay(),
   ],
