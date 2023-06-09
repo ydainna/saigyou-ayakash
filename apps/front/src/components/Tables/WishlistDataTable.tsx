@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button } from "@mui/material";
 import { FcLink, FcFullTrash, FcPlus } from "react-icons/fc";
-import moment from "moment";
+import { DateTime } from "luxon";
 import AddWish from "./../Admin/Add/Wish";
 import wishlistService from "@services/WishlistService";
 import { notify } from "@components/layout-components/Notification/Notification";
@@ -11,17 +11,7 @@ import "@assets/styles/Mui/Datatable.scss";
 import { globalStateProxy } from "../../App";
 import Loader from "@components/layout-components/Loader/Loader";
 import Subtitle from "@components/layout-components/Typography/Subtitle";
-
-type DataTypes = {
-  uuid: string;
-  link: string;
-  name: string;
-  origin: string;
-  version: string;
-  maker: string;
-  date: string;
-  price: number;
-};
+import { IWish } from "@saigyou-ayakash/types";
 
 export default function WishlistDataTable() {
   const [page, setPage] = useState(0);
@@ -106,7 +96,9 @@ export default function WishlistDataTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: DataTypes) => {
+                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: IWish) => {
+                  const createdAt = DateTime.fromJSDate(new Date(row.date)).setLocale("fr").toFormat("d MMMM yyyy");
+
                   return (
                     <TableRow hover key={row.uuid}>
                       <TableCell>
@@ -118,7 +110,7 @@ export default function WishlistDataTable() {
                       <TableCell>{row.origin}</TableCell>
                       <TableCell>{row.version}</TableCell>
                       <TableCell>{row.maker}</TableCell>
-                      <TableCell>{moment(new Date(row.date)).format("DD/MM/YYYY")}</TableCell>
+                      <TableCell>{createdAt}</TableCell>
                       <TableCell>{row.price} €</TableCell>
                       {isLogin && (
                         <TableCell>

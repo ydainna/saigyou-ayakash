@@ -29,6 +29,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@saigyou-ayakash/types": "*",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^18.16.16",
     "@types/node-forge": "^1.3.2",

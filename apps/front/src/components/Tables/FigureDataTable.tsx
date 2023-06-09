@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { DateTime } from "luxon";
 import {
   Avatar,
   Button,
@@ -17,7 +18,6 @@ import {
 } from "@mui/material";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { FcSearch, FcPlus, FcFullTrash, FcEditImage } from "react-icons/fc";
-import moment from "moment";
 import Lightbox from "@components/layout-components/Lightbox/Lightbox";
 import figureService from "@services/FigureService";
 import AddFigure from "./../Admin/Add/Figure";
@@ -30,6 +30,7 @@ import { globalStateProxy } from "../../App";
 import Subtitle from "@components/layout-components/Typography/Subtitle";
 import Loader from "@components/layout-components/Loader/Loader";
 import DeleteFigure from "@components/Admin/Delete/Figure";
+import { IFigure } from "@saigyou-ayakash/types";
 
 const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tooltip {...props} arrow classes={{ popper: className }} />)(
   ({ theme }) => ({
@@ -43,22 +44,11 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tool
   })
 );
 
-type DataTypes = {
-  uuid: string;
-  img: string;
-  name: string;
-  origin: string;
-  version: string;
-  maker: string;
-  date: string;
-  price: number;
-};
-
 export default function FigureDataTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [figureImage, setFigureImage] = useState("");
-  const [modifyFigureData, setModifyFigureData] = useState<DataTypes>({} as DataTypes);
+  const [modifyFigureData, setModifyFigureData] = useState<IFigure>({} as IFigure);
   const [figureName, setFigureName] = useState("");
   const [figureId, setFigureId] = useState("");
   const [search, setSearch] = useState("");
@@ -100,7 +90,7 @@ export default function FigureDataTable() {
   useEffect(() => {
     if (data) {
       setFilteredData(
-        data.filter((item: DataTypes) => {
+        data.filter((item: IFigure) => {
           return (
             item.name.toLowerCase().includes(search.toLowerCase()) ||
             item.origin.toLowerCase().includes(search.toLowerCase()) ||
@@ -184,7 +174,9 @@ export default function FigureDataTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {(rowsPerPage > 0 ? filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : filteredData).map((row: DataTypes) => {
+                {(rowsPerPage > 0 ? filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : filteredData).map((row: IFigure) => {
+                  const createdAt = DateTime.fromJSDate(new Date(row.date)).setLocale("fr").toFormat("d MMMM yyyy");
+
                   return (
                     <TableRow hover key={row.uuid}>
                       <TableCell>
@@ -202,7 +194,7 @@ export default function FigureDataTable() {
                       <TableCell>{row.origin}</TableCell>
                       <TableCell>{row.version}</TableCell>
                       <TableCell>{row.maker}</TableCell>
-                      <TableCell>{moment(new Date(row.date)).format("DD/MM/YYYY")}</TableCell>
+                      <TableCell>{createdAt}</TableCell>
                       <TableCell>{row.price} €</TableCell>
                       {isLogin && (
                         <TableCell>

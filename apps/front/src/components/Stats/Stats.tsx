@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { Fade, styled } from "@mui/material";
-import moment from "moment";
+import { DateTime } from "luxon";
 import euro from "@assets/img/icons/statistic/euro.svg";
 import figure from "@assets/img/icons/statistic/figure.svg";
 import calendar from "@assets/img/icons/statistic/calendrier.svg";
@@ -117,7 +117,7 @@ export default function Stats() {
                   ) : error ? (
                     <Subtitle variant="subtitle1" content="Erreur lors du chargement des données" />
                   ) : (
-                    <Subtitle variant="subtitle1" content={moment(new Date(data?.lastDate)).format("DD/MM/YYYY")} />
+                    <Subtitle variant="subtitle1" content={DateTime.fromJSDate(new Date(data?.lastDate)).setLocale("fr").toFormat("d MMMM yyyy")} />
                   )}
                 </span>
               </span>
