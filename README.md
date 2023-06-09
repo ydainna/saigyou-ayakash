@@ -70,6 +70,7 @@ To **run this project**, you will **need** to add the following environment vari
 
 **front** :
 `VITE_API_BASE_URL`
+`SENTRY_AUTH_TOKEN`
 
 **back** :
 `JWT_ISSUER`
