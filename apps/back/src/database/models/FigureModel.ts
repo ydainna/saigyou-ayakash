@@ -1,16 +1,5 @@
 import { Document, model, Schema } from "mongoose";
-
-// Interface for the Figure model (type of the document)
-interface IFigure {
-  uuid: string;
-  img: string;
-  name: string;
-  origin: string;
-  maker: string;
-  version: string;
-  price: number;
-  date?: string;
-}
+import { IFigure } from "@saigyou-ayakash/types";
 
 // Figure schema
 const FigureSchema = new Schema<IFigure & Document>({
@@ -21,7 +10,7 @@ const FigureSchema = new Schema<IFigure & Document>({
   maker: { type: String, required: true },
   version: { type: String, required: true },
   price: { type: Number, required: true },
-  date: { type: String, required: true },
+  date: { type: Date, required: true },
 });
 
 // Figure model

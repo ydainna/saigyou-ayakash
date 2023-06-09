@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import moment from "moment-timezone";
 import WishModel from "../models/WishModel";
+import { DateTime } from "luxon";
 
 // Wish controller
 export namespace WishlistController {
@@ -16,7 +16,7 @@ export namespace WishlistController {
       maker,
       version,
       price,
-      date: moment().tz("Europe/Paris").format("YYYY-MM-DD HH:mm:ss"),
+      date: DateTime.local().toJSDate(),
     });
     // Save the wish
     await wish.save();

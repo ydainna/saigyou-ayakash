@@ -1,6 +1,6 @@
-import moment from "moment-timezone";
 import { v4 as uuidv4 } from "uuid";
 import FigureModel from "../models/FigureModel";
+import { DateTime } from "luxon";
 
 // Figure controller
 export namespace FigureController {
@@ -16,7 +16,7 @@ export namespace FigureController {
       maker,
       version,
       price,
-      date: moment().tz("Europe/Paris").format("YYYY-MM-DD HH:mm:ss"),
+      date: DateTime.local().toJSDate(),
     });
     // Save the figure
     await figure.save();

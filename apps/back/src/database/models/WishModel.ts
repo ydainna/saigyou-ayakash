@@ -1,16 +1,5 @@
 import { Document, model, Schema } from "mongoose";
-
-// Interface for the Wish model (type of the document)
-interface IWish {
-  uuid: string;
-  link: string;
-  name: string;
-  origin: string;
-  maker: string;
-  version: string;
-  price: number;
-  date: string;
-}
+import { IWish } from "@saigyou-ayakash/types";
 
 // Wish schema
 const WishSchema = new Schema<IWish & Document>({
@@ -21,7 +10,7 @@ const WishSchema = new Schema<IWish & Document>({
   maker: { type: String, required: true },
   version: { type: String, required: true },
   price: { type: Number, required: true },
-  date: { type: String, required: true },
+  date: { type: Date, required: true },
 });
 
 // Wish model
