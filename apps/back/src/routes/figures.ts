@@ -5,7 +5,6 @@ import fs from "fs";
 import Boom from "@hapi/boom";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
-import { DateTime } from "luxon";
 import forge from "node-forge";
 
 export const initFiguresRoutes = async (server: Server) => {
@@ -15,7 +14,7 @@ export const initFiguresRoutes = async (server: Server) => {
     path: "/figures",
     handler: async (_request: Request) => {
       const figures = await FigureController.findAll({ _id: 0, __v: 0 });
-      figures.sort((a, b) => (DateTime.fromJSDate(a.date) < DateTime.fromJSDate(b.date) ? 1 : -1));
+      figures.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       return figures;
     },
   });
