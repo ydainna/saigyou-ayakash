@@ -14,22 +14,27 @@ const service = axios.create({
 
 // API Request interceptor
 service.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  (config) => {
     const jwtToken = localStorage.getItem(constants.AUTH_TOKEN_KEY);
 
-    // If the request is not public, add the token to the header
+    // If no content type header is set, set it to application/json
     if (!config.headers["Content-Type"]) {
       config.headers["Content-Type"] = "application/json";
     }
 
-    // If the request is not public, add the token to the header
+    // If no accept header is set, set it to application/json
     if (!config.headers["Accept"]) {
       config.headers["Accept"] = "application/json";
     }
 
-    // If the request is not public, add the token to the header
+    // If a token is set, add it to the request
     if (jwtToken) {
       config.headers[constants.TOKEN_PAYLOAD_KEY] = "Bearer " + jwtToken;
+    }
+
+    // If no token is set and the request is not public, reload the page
+    if (!jwtToken && !config.headers["X-Public-Request"]) {
+      window.location.reload();
     }
 
     return config;
@@ -41,28 +46,42 @@ service.interceptors.request.use(
   }
 );
 
-// API Response interceptor
+// API respone interceptor
 service.interceptors.response.use(
   (response: AxiosResponse) => {
+    // If the response is a success, return it directly
     return response;
   },
   (error) => {
-    if (error.response) {
-      const { status } = error.response;
+    console.log(error);
 
-      // If the token is not valid, remove it from storage
-      if (status === 401) {
-        localStorage.removeItem(constants.AUTH_TOKEN_KEY);
-        notify.error("Votre session a expiré, veuillez vous reconnecter");
-      }
+    // If the response is an error, display the error message
+    if (error.response == null) {
+      notify.error("Une erreur est survenue, veuillez réessayer");
+      return Promise.reject(error);
+    }
 
-      if (status === 403) {
-        notify.error("Vous n'avez pas les droits pour effectuer cette action");
+    // If the response is an error, display the error message
+    if (error.response.data != null) {
+      let errorStatus = error.response.data.status;
+      let errorMessage = error.response.data.message;
+      if (errorStatus != null) {
+        notify.error(errorStatus);
       }
+      if (errorMessage != null) {
+        notify.error(errorMessage);
+      }
+    }
 
-      if (status === 500) {
-        notify.error("Une erreur est survenue, veuillez réessayer");
-      }
+    // Remove token and redirect
+    if (error.response.status === 403) {
+      localStorage.removeItem(constants.AUTH_TOKEN_KEY);
+      window.location.reload();
+    }
+
+    // If the response is an error, display the error message
+    if (error.response.status === 500) {
+      notify.error("Internal server error");
     }
 
     return Promise.reject(error);

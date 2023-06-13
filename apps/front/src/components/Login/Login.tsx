@@ -31,11 +31,11 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
         const token = response.token;
         login(token);
         handleLoginClose();
-        notify.success("Connexion réussie");
+        notify.success("Vous désormais connecté.");
       })
       .catch((error: Error) => {
         log.error(error);
-        notify.error("Nom de compte ou mot de passe incorrect");
+        notify.error("Nom de compte ou mot de passe incorrect.");
       });
   };
 
