@@ -46,36 +46,29 @@ export const init = async (): Promise<Server> => {
     cookie: {
       name: "session",
       password: process.env.COOKIE_SECRET,
-      isSecure: false,
+      isSecure: true,
       isHttpOnly: false,
       path: "/",
       ttl: 1000 * 60 * 60 * 24 * 7, // 1 week
       clearInvalid: true,
       strictHeader: true,
     },
-    //scopvalidate
-    validate: async (request: any, session: { id: number; scope: string } | undefined) => {
-      if (!session) {
+    validate: async (request: any, session: any) => {
+      const account = await UserController.findById(session.id);
+
+      if (!account) {
         return { isValid: false };
       }
 
-      const user = await UserController.findById(session.id);
-
-      if (!user) {
-        console.log("user not found");
+      if (session.scope !== account.scope) {
         return { isValid: false };
       }
 
-      console.log(`"${user.scope}" === "${request.auth.credentials.scope}"`);
-
-      if (user.scope !== session.scope) {
-        console.log("user scope not valid");
-        return { isValid: false };
-      }
-
-      return { isValid: true, credentials: { id: session.id, scope: session.scope } };
+      return { isValid: true, credentials: account };
     },
   });
+
+  server.auth.default("session");
 
   // register routes
   await initAdminFiguresRoutes(server);

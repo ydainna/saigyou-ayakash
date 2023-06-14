@@ -33,7 +33,6 @@ export const initLoginRoutes = async (server: Server) => {
       request.cookieAuth.set({
         id: user.id,
         scope: user.scope,
-        credentials: { id: user.id, scope: user.scope },
       });
 
       return h.response().code(200);
