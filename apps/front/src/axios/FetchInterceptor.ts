@@ -5,18 +5,18 @@ import { notify } from "@components/layout-components/Notification/Notification"
 type ServiceTypes = {
   baseURL: string;
   timeout: number;
+  withCredentials: boolean;
 };
 
 const service = axios.create({
   baseURL: constants.API_URL,
   timeout: 10000,
+  withCredentials: true,
 } as ServiceTypes);
 
 // API Request interceptor
 service.interceptors.request.use(
   (config) => {
-    const jwtToken = localStorage.getItem(constants.AUTH_TOKEN_KEY);
-
     // If no content type header is set, set it to application/json
     if (!config.headers["Content-Type"]) {
       config.headers["Content-Type"] = "application/json";
@@ -25,16 +25,6 @@ service.interceptors.request.use(
     // If no accept header is set, set it to application/json
     if (!config.headers["Accept"]) {
       config.headers["Accept"] = "application/json";
-    }
-
-    // If a token is set, add it to the request
-    if (jwtToken) {
-      config.headers[constants.TOKEN_PAYLOAD_KEY] = "Bearer " + jwtToken;
-    }
-
-    // If no token is set and the request is not public, reload the page
-    if (!jwtToken && !config.headers["X-Public-Request"]) {
-      window.location.reload();
     }
 
     return config;
@@ -76,7 +66,6 @@ service.interceptors.response.use(
     // Remove token and redirect
     if (error.response.status === 403) {
       localStorage.removeItem(constants.AUTH_TOKEN_KEY);
-      window.location.reload();
     }
 
     // If the response is an error, display the error message

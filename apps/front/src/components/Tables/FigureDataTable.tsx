@@ -196,16 +196,14 @@ export default function FigureDataTable() {
                       <TableCell>{row.maker}</TableCell>
                       <TableCell>{createdAt}</TableCell>
                       <TableCell>{row.price} €</TableCell>
-                      {isLogin && (
-                        <TableCell>
-                          <Button onClick={() => handleModifyFigureOpen(row)} color="primary" startIcon={<FcEditImage />}>
-                            Modifier
-                          </Button>
-                          <Button onClick={() => handleDeleteFigureOpen(row.uuid)} color="error" startIcon={<FcFullTrash />}>
-                            Supprimer
-                          </Button>
-                        </TableCell>
-                      )}
+                      <TableCell>
+                        <Button onClick={() => handleModifyFigureOpen(row)} color="primary" startIcon={<FcEditImage />}>
+                          Modifier
+                        </Button>
+                        <Button onClick={() => handleDeleteFigureOpen(row.uuid)} color="error" startIcon={<FcFullTrash />}>
+                          Supprimer
+                        </Button>
+                      </TableCell>
                     </TableRow>
                   );
                 })}

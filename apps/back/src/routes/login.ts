@@ -2,7 +2,6 @@ import Boom from "@hapi/boom";
 import { Request, ResponseToolkit, Server } from "@hapi/hapi";
 import Joi from "joi";
 import UserModel from "../database/models/UserModel";
-import jwt from "jsonwebtoken";
 
 export const initLoginRoutes = async (server: Server) => {
   //login
@@ -16,6 +15,7 @@ export const initLoginRoutes = async (server: Server) => {
           password: Joi.string().required(),
         }),
       },
+      auth: false,
     },
     handler: async (request: Request, h: ResponseToolkit) => {
       const payload: any = request.payload;
@@ -29,20 +29,24 @@ export const initLoginRoutes = async (server: Server) => {
         throw Boom.unauthorized("Invalid username or password");
       }
 
-      // Create a token
-      const token = jwt.sign(
-        {
-          iat: Math.floor(Date.now() / 1000),
-          iss: process.env.JWT_ISSUER || "",
-          exp: Math.floor(Date.now() / 1000) + 604800,
-          displayName: user.displayName,
-          avatar: user.avatar,
-        },
-        process.env.JWT_SECRET || ""
-      );
+      // Set auth
+      request.cookieAuth.set({
+        id: user.id,
+        scope: user.scope,
+        credentials: { id: user.id, scope: user.scope },
+      });
 
-      const data = { token: token };
-      return h.response(data).code(200);
+      return h.response().code(200);
+    },
+  });
+
+  //logout
+  server.route({
+    method: "POST",
+    path: "/admin/logout",
+    handler: async (request: Request, h: ResponseToolkit) => {
+      request.cookieAuth.clear();
+      return h.response().code(200);
     },
   });
 };

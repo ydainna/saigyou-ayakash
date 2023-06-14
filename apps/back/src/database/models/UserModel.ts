@@ -5,7 +5,7 @@ interface IUser {
   username: string;
   password: string;
   displayName: string;
-  avatar: string;
+  scope: string;
 }
 
 // User schema
@@ -13,6 +13,7 @@ const UserSchema = new Schema<IUser & Document>({
   username: { type: String, required: true },
   password: { type: String, required: true },
   displayName: { type: String, required: true },
+  scope: { type: String, required: true },
 });
 
 // User model

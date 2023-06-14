@@ -28,8 +28,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
     const data = Object.fromEntries(formData.entries());
     JwtAuthService.login(data)
       .then((response: any) => {
-        const token = response.token;
-        login(token);
         handleLoginClose();
         notify.success("Vous désormais connecté.");
       })
