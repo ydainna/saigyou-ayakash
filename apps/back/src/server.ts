@@ -49,8 +49,8 @@ export const init = async (): Promise<Server> => {
     cookie: {
       name: "session",
       password: process.env.COOKIE_SECRET,
-      isSecure: true,
-      isHttpOnly: false,
+      isSecure: process.env.NODE_ENV !== "dev",
+      isHttpOnly: true,
       path: "/",
       ttl: 1000 * 60 * 60 * 24 * 7, // 1 week
       clearInvalid: true,
