@@ -13,6 +13,10 @@ export const initAdminFiguresRoutes = async (server: Server) => {
     method: "POST",
     path: "/admin/figures",
     options: {
+      auth: {
+        strategy: "session",
+        scope: "admin",
+      },
       payload: {
         maxBytes: 10485760, // max: 10Mo
         parse: true, // parse the payload

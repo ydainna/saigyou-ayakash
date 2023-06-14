@@ -4,16 +4,17 @@ import { getLogger } from "./utils/getLogger";
 import { Database } from "./database/mongo";
 import * as Sentry from "@sentry/node";
 import CookiePlugin from "@hapi/cookie";
+//Controllers db
 import { UserController } from "./database/controllers/UserController";
-//routes
-import { initFiguresRoutes } from "./routes/figures";
-import { initLoginRoutes } from "./routes/login";
-import { initWishlistRoutes } from "./routes/wishlist";
-import { initPictureRoutes } from "./routes/picture";
+//Public routes
+import { initFiguresRoutes } from "./routes/public/figures";
+import { initLoginRoutes } from "./routes/public/login";
+import { initWishlistRoutes } from "./routes/public/wishlist";
+import { initPictureRoutes } from "./routes/public/picture";
+//Admin routes
 import { initAdminFiguresRoutes } from "./routes/admin/AdminFigures";
 import { initAdminWishlistRoutes } from "./routes/admin/AdminWishlist";
 //middleware
-import { adminMiddleware } from "./middleware/adminMiddleware";
 import { errorMiddleware } from "./middleware/errorMiddleware";
 
 export let server: Server;
@@ -37,11 +38,13 @@ export const init = async (): Promise<Server> => {
   await server.register(require("@hapi/inert"));
   await server.register(CookiePlugin);
 
+  // Register public routes
   await initLoginRoutes(server);
   await initFiguresRoutes(server);
   await initWishlistRoutes(server);
   await initPictureRoutes(server);
 
+  // Register auth strategy
   server.auth.strategy("session", "cookie", {
     cookie: {
       name: "session",
@@ -68,25 +71,22 @@ export const init = async (): Promise<Server> => {
     },
   });
 
+  // Set default auth strategy
   server.auth.default("session");
 
-  // register routes
+  // register admin routes
   await initAdminFiguresRoutes(server);
   await initAdminWishlistRoutes(server);
 
   // Register middleware
-  //await adminMiddleware(server);
   await errorMiddleware(server);
 
   // Connect to database
   await Database.connect();
 
+  // Sentry
   Sentry.init({
     dsn: "https://cebb6018536749e08fbaa19b0e501208@o4504728954470400.ingest.sentry.io/4504730904625152",
-
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
   });
 

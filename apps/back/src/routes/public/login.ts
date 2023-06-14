@@ -1,7 +1,7 @@
 import Boom from "@hapi/boom";
 import { Request, ResponseToolkit, Server } from "@hapi/hapi";
 import Joi from "joi";
-import UserModel from "../database/models/UserModel";
+import UserModel from "../../database/models/UserModel";
 
 export const initLoginRoutes = async (server: Server) => {
   //login
@@ -44,6 +44,10 @@ export const initLoginRoutes = async (server: Server) => {
     method: "POST",
     path: "/admin/logout",
     handler: async (request: Request, h: ResponseToolkit) => {
+      if (!request.auth.isAuthenticated) {
+        throw Boom.unauthorized("You are not logged in");
+      }
+
       request.cookieAuth.clear();
       return h.response().code(200);
     },

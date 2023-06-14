@@ -1,5 +1,5 @@
 import { Request, Server } from "@hapi/hapi";
-import { FigureController } from "../database/controllers/FigureController";
+import { FigureController } from "../../database/controllers/FigureController";
 
 export const initFiguresRoutes = async (server: Server) => {
   //get all figures

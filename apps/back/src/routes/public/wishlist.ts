@@ -1,5 +1,5 @@
 import { Request, Server } from "@hapi/hapi";
-import { WishlistController } from "../database/controllers/WishController";
+import { WishlistController } from "../../database/controllers/WishController";
 
 export const initWishlistRoutes = async (server: Server) => {
   //get all wishes
