@@ -1,38 +1,22 @@
 import { Request, Server, ResponseToolkit } from "@hapi/hapi";
 import Joi from "joi";
-import { FigureController } from "../database/controllers/FigureController";
+import { FigureController } from "../../database/controllers/FigureController";
 import fs from "fs";
 import Boom from "@hapi/boom";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import forge from "node-forge";
 
-export const initFiguresRoutes = async (server: Server) => {
-  //get all figures
-  server.route({
-    method: "GET",
-    path: "/figures",
-    handler: async (_request: Request) => {
-      const figures = await FigureController.findAll({ _id: 0, __v: 0 });
-      figures.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      return figures;
-    },
-  });
-
-  //get all stats
-  server.route({
-    method: "GET",
-    path: "/stats",
-    handler: async (_request: Request) => {
-      return FigureController.getStats();
-    },
-  });
-
+export const initAdminFiguresRoutes = async (server: Server) => {
   //create figure
   server.route({
     method: "POST",
     path: "/admin/figures",
     options: {
+      auth: {
+        strategy: "session",
+        scope: "admin",
+      },
       payload: {
         maxBytes: 10485760, // max: 10Mo
         parse: true, // parse the payload
@@ -54,24 +38,24 @@ export const initFiguresRoutes = async (server: Server) => {
 
       // Check if all fields are present
       if (!payload.img) {
-        throw Boom.badRequest("No file detected");
+        throw Boom.badRequest("Le fichier est manquant !");
       }
 
       // Check if the file is too big
       if (payload.img.byteLength > 10485760) {
-        throw Boom.badRequest("File too big");
+        throw Boom.badRequest("Le fichier est trop volumineux !");
       }
 
       // Check if the file is a jpg
       if (!payload.img.toString("base64").startsWith("/9j/")) {
-        throw Boom.badRequest("File is not a jpg");
+        throw Boom.badRequest("Le fichier n'est pas une image ou n'est pas au format jpg !");
       }
 
       const randomFileName = forge.md.md5.create().update(uuidv4()).digest().toHex() + ".jpg";
       fs.writeFileSync(path.resolve("public", "img", randomFileName), payload.img);
       await FigureController.create(randomFileName, payload.name, payload.origin, payload.maker, payload.version, payload.price);
 
-      const data = { status: "Figure created" };
+      const data = { message: "La figurine a bien été crée." };
       return h.response(data).code(200);
     },
   });
@@ -81,6 +65,10 @@ export const initFiguresRoutes = async (server: Server) => {
     method: "DELETE",
     path: "/admin/figures/{uuid}",
     options: {
+      auth: {
+        strategy: "session",
+        scope: "admin",
+      },
       validate: {
         params: Joi.object({
           uuid: Joi.string().required(),
@@ -93,18 +81,18 @@ export const initFiguresRoutes = async (server: Server) => {
 
       // Check if the figure exists
       if (!figure) {
-        throw Boom.badRequest("Invalid figure uuid");
+        throw Boom.badRequest("uuid de la figurine invalide !");
       }
 
       // Check if the figure has an image
       if (!figure.img) {
-        throw Boom.badRequest("Invalid figure img");
+        throw Boom.badRequest("La figurine n'a pas d'image !");
       }
 
       fs.unlinkSync(path.resolve("public", "img", figure.img));
       await FigureController.deleteFigure(uuid);
 
-      const data = { status: "Figure deleted" };
+      const data = { message: "La figurine a bien été supprimée." };
       return h.response(data).code(200);
     },
   });
@@ -113,6 +101,10 @@ export const initFiguresRoutes = async (server: Server) => {
     method: "PATCH",
     path: "/admin/figures/{uuid}",
     options: {
+      auth: {
+        strategy: "session",
+        scope: "admin",
+      },
       validate: {
         params: Joi.object({
           uuid: Joi.string().required(),
@@ -134,12 +126,12 @@ export const initFiguresRoutes = async (server: Server) => {
 
       // Check if the figure exists
       if (!figure) {
-        throw Boom.badRequest("Invalid figure uuid");
+        throw Boom.badRequest("uuid de la figurine invalide !");
       }
 
       await FigureController.updateFigure(uuid, payload.name, payload.origin, payload.maker, payload.version, payload.price);
 
-      const data = { status: "Figure updated" };
+      const data = { message: "La figurine a bien été modifiée." };
       return h.response(data).code(200);
     },
   });

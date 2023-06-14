@@ -63,12 +63,7 @@ export default function FigureDataTable() {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["figureData"],
     queryFn: async () => {
-      try {
-        const response = await figureService.getAll();
-        return response;
-      } catch (e) {
-        console.error(e);
-      }
+      return figureService.getAll();
     },
   });
   globalStateProxy.refetchFigures = refetch;

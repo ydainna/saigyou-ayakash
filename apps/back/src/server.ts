@@ -3,13 +3,18 @@ import { Server } from "@hapi/hapi";
 import { getLogger } from "./utils/getLogger";
 import { Database } from "./database/mongo";
 import * as Sentry from "@sentry/node";
-//routes
-import { initFiguresRoutes } from "./routes/figures";
-import { initLoginRoutes } from "./routes/login";
-import { initWishlistRoutes } from "./routes/wishlist";
-import { initPictureRoutes } from "./routes/picture";
+import CookiePlugin from "@hapi/cookie";
+//Controllers db
+import { UserController } from "./database/controllers/UserController";
+//Public routes
+import { initFiguresRoutes } from "./routes/public/figures";
+import { initLoginRoutes } from "./routes/public/login";
+import { initWishlistRoutes } from "./routes/public/wishlist";
+import { initPictureRoutes } from "./routes/public/picture";
+//Admin routes
+import { initAdminFiguresRoutes } from "./routes/admin/AdminFigures";
+import { initAdminWishlistRoutes } from "./routes/admin/AdminWishlist";
 //middleware
-import { adminMiddleware } from "./middleware/adminMiddleware";
 import { errorMiddleware } from "./middleware/errorMiddleware";
 
 export let server: Server;
@@ -24,32 +29,64 @@ export const init = async (): Promise<Server> => {
       cors: {
         origin: process.env.NODE_ENV === "dev" ? ["*"] : ["https://saigyou-ayakash.com"],
         additionalHeaders: ["X-Public-Request", "Content-Type", "Origin", "Authorization", "Cache-Control"],
+        credentials: true,
       },
     },
   });
 
   // Register plugins
   await server.register(require("@hapi/inert"));
+  await server.register(CookiePlugin);
 
-  // register routes
-  await initFiguresRoutes(server);
+  // Register public routes
   await initLoginRoutes(server);
+  await initFiguresRoutes(server);
   await initWishlistRoutes(server);
   await initPictureRoutes(server);
 
+  // Register auth strategy
+  server.auth.strategy("session", "cookie", {
+    cookie: {
+      name: "session",
+      password: process.env.COOKIE_SECRET,
+      isSecure: process.env.NODE_ENV !== "dev",
+      isHttpOnly: true,
+      path: "/",
+      ttl: 1000 * 60 * 60 * 24 * 7, // 1 week
+      clearInvalid: true,
+      strictHeader: true,
+    },
+    validate: async (request: any, session: any) => {
+      const account = await UserController.findById(session.id);
+
+      if (!account) {
+        return { isValid: false };
+      }
+
+      if (session.scope !== account.scope) {
+        return { isValid: false };
+      }
+
+      return { isValid: true, credentials: account };
+    },
+  });
+
+  // Set default auth strategy
+  server.auth.default("session");
+
+  // register admin routes
+  await initAdminFiguresRoutes(server);
+  await initAdminWishlistRoutes(server);
+
   // Register middleware
-  await adminMiddleware(server);
   await errorMiddleware(server);
 
   // Connect to database
   await Database.connect();
 
+  // Sentry
   Sentry.init({
     dsn: "https://cebb6018536749e08fbaa19b0e501208@o4504728954470400.ingest.sentry.io/4504730904625152",
-
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
   });
 

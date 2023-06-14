@@ -18,18 +18,11 @@ export default function DeleteFigure({ isDeleteFigureOpen, setDeleteFigureOpen, 
   };
 
   const handleDelete = (uuid: string) => {
-    figureService
-      .deleteFigure(uuid)
-      .then(() => {
-        notify.success("La figurine a bien été supprimée");
-        globalStateProxy.refetchFigures();
-        globalStateProxy.refetchStats();
-        handleDeleteFigureClose();
-      })
-      .catch((error: any) => {
-        console.log(error);
-        notify.error("Erreur lors de la suppression de la figurine");
-      });
+    figureService.deleteFigure(uuid).then(() => {
+      globalStateProxy.refetchFigures();
+      globalStateProxy.refetchStats();
+      handleDeleteFigureClose();
+    });
   };
 
   return (

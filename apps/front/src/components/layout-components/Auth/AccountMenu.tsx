@@ -20,7 +20,7 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tool
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { logout, user } = useContext(AuthContext);
+  const { logout, displayname } = useContext(AuthContext);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -32,7 +32,7 @@ export default function AccountMenu() {
 
   return (
     <>
-      <BootstrapTooltip title={`Mon compte (${user})`} placement="bottom">
+      <BootstrapTooltip title={`Mon compte (${displayname})`} placement="bottom">
         <IconButton
           onClick={handleClick}
           size="small"

@@ -1,23 +1,18 @@
 import { Request, ResponseToolkit, Server } from "@hapi/hapi";
 import Joi from "joi";
 import Boom from "@hapi/boom";
-import { WishlistController } from "../database/controllers/WishController";
+import { WishlistController } from "../../database/controllers/WishController";
 
-export const initWishlistRoutes = async (server: Server) => {
-  //get all wishes
-  server.route({
-    method: "GET",
-    path: "/wishlist",
-    handler: async (_request: Request) => {
-      return WishlistController.findAll();
-    },
-  });
-
+export const initAdminWishlistRoutes = async (server: Server) => {
   //create wish
   server.route({
     method: "POST",
     path: "/admin/wish",
     options: {
+      auth: {
+        strategy: "session",
+        scope: "admin",
+      },
       validate: {
         payload: Joi.object({
           link: Joi.string().required(),
@@ -34,12 +29,12 @@ export const initWishlistRoutes = async (server: Server) => {
 
       // Check if all fields are present
       if (!payload.link || !payload.name || !payload.origin || !payload.maker || !payload.version || !payload.price) {
-        throw Boom.badRequest("Missing fields");
+        throw Boom.badRequest("Veuillez remplir tous les champs !");
       }
 
       await WishlistController.create(payload.link, payload.name, payload.origin, payload.maker, payload.version, payload.price);
 
-      const data = { status: "Wish created" };
+      const data = { message: "Le voeux a bien été crée." };
       return h.response(data).code(200);
     },
   });
@@ -49,6 +44,10 @@ export const initWishlistRoutes = async (server: Server) => {
     method: "DELETE",
     path: "/admin/wish/{uuid}",
     options: {
+      auth: {
+        strategy: "session",
+        scope: "admin",
+      },
       validate: {
         params: Joi.object({
           uuid: Joi.string().required(),
@@ -59,7 +58,7 @@ export const initWishlistRoutes = async (server: Server) => {
       const uuid = request.params.uuid;
       await WishlistController.deleteWish(uuid);
 
-      const data = { status: "Wish deleted" };
+      const data = { message: "Le voeux a bien été supprimé." };
       return h.response(data).code(200);
     },
   });

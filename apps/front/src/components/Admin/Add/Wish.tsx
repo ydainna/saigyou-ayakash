@@ -19,21 +19,13 @@ export default function AddWish({ isAddWishOpen, setAddWishOpen }: AddWishTypes)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const log = getLogger("Addwish");
     const form = event.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    wishlistService
-      .add(data)
-      .then(() => {
-        handleAddWishClose();
-        globalStateProxy.refetchWishes();
-        notify.success("Le souhait a bien été ajouté");
-      })
-      .catch((error: Error) => {
-        log.error(error);
-        notify.error("Erreur lors de l'ajout du souhait");
-      });
+    wishlistService.add(data).then(() => {
+      handleAddWishClose();
+      globalStateProxy.refetchWishes();
+    });
   };
 
   return (
