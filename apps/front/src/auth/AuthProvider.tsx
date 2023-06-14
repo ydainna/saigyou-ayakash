@@ -1,59 +1,44 @@
 import { useState, useMemo, useEffect } from "react";
-import jwtDecode from "jwt-decode";
 import { AuthContext, AuthContextValue } from "./AuthContext";
 import { constants } from "@utils/constants";
+import AuthService from "@services/AuthService";
 
 type TypesAuthProvider = {
   children: React.ReactNode;
 };
 
 export default function AuthProvider({ children }: TypesAuthProvider) {
-  const [token, setToken] = useState<string | undefined>(undefined);
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const login = useMemo(
-    () => (token: any) => {
-      setToken(token);
+    () => (displayname: string) => {
       setIsLogin(true);
-      localStorage.setItem(constants.AUTH_TOKEN_KEY, token);
+      localStorage.setItem(constants.DISPLAYNAME_KEY, displayname);
     },
     []
   );
 
-  const user = useMemo(() => {
-    const token = localStorage.getItem(constants.AUTH_TOKEN_KEY);
-    if (token) {
-      const { displayName }: any = jwtDecode(token);
-      return displayName;
-    } else {
-      return undefined;
-    }
-  }, []);
-
   const logout = useMemo(
     () => () => {
-      setToken(undefined);
       setIsLogin(false);
-      localStorage.removeItem(constants.AUTH_TOKEN_KEY);
+      localStorage.removeItem(constants.DISPLAYNAME_KEY);
+      AuthService.logout();
     },
     []
   );
 
   useEffect(() => {
-    const token = localStorage.getItem(constants.AUTH_TOKEN_KEY);
-    if (token) {
+    const displayName = localStorage.getItem(constants.DISPLAYNAME_KEY);
+    if (displayName) {
       setIsLogin(true);
-    } else {
-      setIsLogin(false);
     }
   }, []);
 
   const value: AuthContextValue = {
-    token,
     login,
     logout,
-    user,
     isLogin,
+    displayname: localStorage.getItem(constants.DISPLAYNAME_KEY) || "",
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

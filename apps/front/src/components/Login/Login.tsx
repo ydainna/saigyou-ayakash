@@ -2,8 +2,7 @@ import { useContext } from "react";
 import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mui/material";
 import { FcManager, FcKey } from "react-icons/fc";
 import { getLogger } from "@utils/getLogger";
-import { notify } from "@components/layout-components/Notification/Notification";
-import JwtAuthService from "@services/JwtAuthService";
+import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
 import "./Login.scss";
 import "@assets/styles/Mui/Input.scss";
@@ -22,19 +21,13 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const log = getLogger("Login");
     const form = event.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    JwtAuthService.login(data)
-      .then((response: any) => {
-        handleLoginClose();
-        notify.success("Vous désormais connecté.");
-      })
-      .catch((error: Error) => {
-        log.error(error);
-        notify.error("Nom de compte ou mot de passe incorrect.");
-      });
+    AuthService.login(data).then((response: any) => {
+      handleLoginClose();
+      login(response.displayName);
+    });
   };
 
   return (

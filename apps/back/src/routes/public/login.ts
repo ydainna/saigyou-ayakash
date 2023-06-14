@@ -19,14 +19,14 @@ export const initLoginRoutes = async (server: Server) => {
     },
     handler: async (request: Request, h: ResponseToolkit) => {
       const payload: any = request.payload;
+
       const user = await UserModel.findOne({
         username: payload.username,
         password: payload.password,
       });
 
-      // Check if all fields are present
       if (!user) {
-        throw Boom.unauthorized("Invalid username or password");
+        throw Boom.unauthorized("Nom de compte ou mot de passe incorrect");
       }
 
       // Set auth
@@ -35,21 +35,28 @@ export const initLoginRoutes = async (server: Server) => {
         scope: user.scope,
       });
 
-      return h.response().code(200);
+      const data = {
+        displayName: user.displayName,
+        message: "Vous désormais êtes connecté.",
+      };
+
+      return h.response(data).code(200);
     },
   });
 
   //logout
   server.route({
-    method: "POST",
+    method: "GET",
     path: "/admin/logout",
     handler: async (request: Request, h: ResponseToolkit) => {
       if (!request.auth.isAuthenticated) {
-        throw Boom.unauthorized("You are not logged in");
+        throw Boom.unauthorized("Vous n'êtes pas connecté");
       }
 
       request.cookieAuth.clear();
-      return h.response().code(200);
+
+      const data = { message: "Vous êtes désormais déconnecté." };
+      return h.response(data).code(200);
     },
   });
 };

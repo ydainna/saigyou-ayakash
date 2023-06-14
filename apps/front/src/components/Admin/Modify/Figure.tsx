@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
 import figureService from "@services/FigureService";
-import { getLogger } from "@utils/getLogger";
-import { notify } from "@components/layout-components/Notification/Notification";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
 import "@assets/styles/Mui/Input.scss";
@@ -54,17 +52,11 @@ export default function ModifyFigure({ isModifyFigureOpen, setModifyFigureOpen, 
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    figureService
-      .updateFigure(modifyFigureData.uuid, formData)
-      .then(() => {
-        handleModifyFigureClose();
-        globalStateProxy.refetchFigures();
-        globalStateProxy.refetchStats();
-        notify.success("La figurine a bien été modifiée");
-      })
-      .catch(() => {
-        notify.error("Erreur lors de la modification de la figurine");
-      });
+    figureService.updateFigure(modifyFigureData.uuid, formData).then(() => {
+      handleModifyFigureClose();
+      globalStateProxy.refetchFigures();
+      globalStateProxy.refetchStats();
+    });
   };
 
   return (

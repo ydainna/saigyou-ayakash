@@ -11,7 +11,7 @@ export const initAdminWishlistRoutes = async (server: Server) => {
     options: {
       auth: {
         strategy: "session",
-        scope: ["admin"],
+        scope: "admin",
       },
       validate: {
         payload: Joi.object({
@@ -29,12 +29,12 @@ export const initAdminWishlistRoutes = async (server: Server) => {
 
       // Check if all fields are present
       if (!payload.link || !payload.name || !payload.origin || !payload.maker || !payload.version || !payload.price) {
-        throw Boom.badRequest("Missing fields");
+        throw Boom.badRequest("Veuillez remplir tous les champs !");
       }
 
       await WishlistController.create(payload.link, payload.name, payload.origin, payload.maker, payload.version, payload.price);
 
-      const data = { status: "Wish created" };
+      const data = { message: "Le voeux a bien été crée." };
       return h.response(data).code(200);
     },
   });
@@ -46,7 +46,7 @@ export const initAdminWishlistRoutes = async (server: Server) => {
     options: {
       auth: {
         strategy: "session",
-        scope: ["admin"],
+        scope: "admin",
       },
       validate: {
         params: Joi.object({
@@ -58,7 +58,7 @@ export const initAdminWishlistRoutes = async (server: Server) => {
       const uuid = request.params.uuid;
       await WishlistController.deleteWish(uuid);
 
-      const data = { status: "Wish deleted" };
+      const data = { message: "Le voeux a bien été supprimé." };
       return h.response(data).code(200);
     },
   });

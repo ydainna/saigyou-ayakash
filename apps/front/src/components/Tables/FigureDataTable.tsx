@@ -63,12 +63,7 @@ export default function FigureDataTable() {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["figureData"],
     queryFn: async () => {
-      try {
-        const response = await figureService.getAll();
-        return response;
-      } catch (e) {
-        console.error(e);
-      }
+      return figureService.getAll();
     },
   });
   globalStateProxy.refetchFigures = refetch;
@@ -196,14 +191,16 @@ export default function FigureDataTable() {
                       <TableCell>{row.maker}</TableCell>
                       <TableCell>{createdAt}</TableCell>
                       <TableCell>{row.price} €</TableCell>
-                      <TableCell>
-                        <Button onClick={() => handleModifyFigureOpen(row)} color="primary" startIcon={<FcEditImage />}>
-                          Modifier
-                        </Button>
-                        <Button onClick={() => handleDeleteFigureOpen(row.uuid)} color="error" startIcon={<FcFullTrash />}>
-                          Supprimer
-                        </Button>
-                      </TableCell>
+                      {isLogin && (
+                        <TableCell>
+                          <Button onClick={() => handleModifyFigureOpen(row)} color="primary" startIcon={<FcEditImage />}>
+                            Modifier
+                          </Button>
+                          <Button onClick={() => handleDeleteFigureOpen(row.uuid)} color="error" startIcon={<FcFullTrash />}>
+                            Supprimer
+                          </Button>
+                        </TableCell>
+                      )}
                     </TableRow>
                   );
                 })}

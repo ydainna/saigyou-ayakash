@@ -3,7 +3,6 @@ import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
 import FileUpload from "react-mui-fileuploader";
 import moment from "moment";
 import figureService from "@services/FigureService";
-import { getLogger } from "@utils/getLogger";
 import { notify } from "@components/layout-components/Notification/Notification";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
@@ -27,23 +26,14 @@ export default function AddFigure({ isAddFigureOpen, setAddFigureOpen }: AddFigu
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const log = getLogger("AddFigure");
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append("img", filesToUpload[0]);
-    figureService
-      .add(formData)
-      .then(() => {
-        handleAddFigureClose();
-        globalStateProxy.refetchFigures();
-        globalStateProxy.refetchStats();
-        notify.success("La figurine a bien été ajoutée");
-      })
-      .catch((error: any) => {
-        log.error(error);
-        log.error(formData);
-        notify.error("Erreur lors de l'ajout de la figurine");
-      });
+    figureService.add(formData).then(() => {
+      handleAddFigureClose();
+      globalStateProxy.refetchFigures();
+      globalStateProxy.refetchStats();
+    });
   };
 
   return (

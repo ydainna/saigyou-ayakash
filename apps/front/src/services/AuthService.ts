@@ -1,10 +1,10 @@
 import api from "@axios/FetchInterceptor";
 import forge from "node-forge";
 
-const JwtAuthService: any = {};
+const AuthService: any = {};
 
 // login
-JwtAuthService.login = async (data: any) => {
+AuthService.login = async (data: any) => {
   const res = await api("/admin/login", {
     method: "POST",
     headers: {
@@ -24,4 +24,11 @@ JwtAuthService.login = async (data: any) => {
   return res.data;
 };
 
-export default JwtAuthService;
+// logout
+AuthService.logout = async () => {
+  await api("/admin/logout", {
+    method: "GET",
+  });
+};
+
+export default AuthService;

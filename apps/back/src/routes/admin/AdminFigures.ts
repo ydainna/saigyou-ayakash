@@ -38,24 +38,24 @@ export const initAdminFiguresRoutes = async (server: Server) => {
 
       // Check if all fields are present
       if (!payload.img) {
-        throw Boom.badRequest("No file detected");
+        throw Boom.badRequest("Le fichier est manquant !");
       }
 
       // Check if the file is too big
       if (payload.img.byteLength > 10485760) {
-        throw Boom.badRequest("File too big");
+        throw Boom.badRequest("Le fichier est trop volumineux !");
       }
 
       // Check if the file is a jpg
       if (!payload.img.toString("base64").startsWith("/9j/")) {
-        throw Boom.badRequest("File is not a jpg");
+        throw Boom.badRequest("Le fichier n'est pas une image ou n'est pas au format jpg !");
       }
 
       const randomFileName = forge.md.md5.create().update(uuidv4()).digest().toHex() + ".jpg";
       fs.writeFileSync(path.resolve("public", "img", randomFileName), payload.img);
       await FigureController.create(randomFileName, payload.name, payload.origin, payload.maker, payload.version, payload.price);
 
-      const data = { status: "Figure created" };
+      const data = { message: "La figurine a bien été crée." };
       return h.response(data).code(200);
     },
   });
@@ -81,18 +81,18 @@ export const initAdminFiguresRoutes = async (server: Server) => {
 
       // Check if the figure exists
       if (!figure) {
-        throw Boom.badRequest("Invalid figure uuid");
+        throw Boom.badRequest("uuid de la figurine invalide !");
       }
 
       // Check if the figure has an image
       if (!figure.img) {
-        throw Boom.badRequest("Invalid figure img");
+        throw Boom.badRequest("La figurine n'a pas d'image !");
       }
 
       fs.unlinkSync(path.resolve("public", "img", figure.img));
       await FigureController.deleteFigure(uuid);
 
-      const data = { status: "Figure deleted" };
+      const data = { message: "La figurine a bien été supprimée." };
       return h.response(data).code(200);
     },
   });
@@ -126,12 +126,12 @@ export const initAdminFiguresRoutes = async (server: Server) => {
 
       // Check if the figure exists
       if (!figure) {
-        throw Boom.badRequest("Invalid figure uuid");
+        throw Boom.badRequest("uuid de la figurine invalide !");
       }
 
       await FigureController.updateFigure(uuid, payload.name, payload.origin, payload.maker, payload.version, payload.price);
 
-      const data = { status: "Figure updated" };
+      const data = { message: "La figurine a bien été modifiée." };
       return h.response(data).code(200);
     },
   });

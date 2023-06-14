@@ -27,10 +27,9 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tool
 export default function Stats() {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["statsData"],
-    queryFn: () =>
-      figureService.getStats().then((response: any) => {
-        return response;
-      }),
+    queryFn: async () => {
+      return figureService.getStats();
+    },
   });
   globalStateProxy.refetchStats = refetch;
 

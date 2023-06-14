@@ -1,17 +1,15 @@
 import { createContext } from "react";
 
 export interface AuthContextValue {
-  token: string | undefined;
-  login: (token: string | ((token: string) => string)) => void;
-  user: () => void;
+  login: (displayname: string) => void;
   logout: () => void;
   isLogin: boolean;
+  displayname?: string;
 }
 
 export const AuthContext = createContext<AuthContextValue>({
-  token: undefined,
   login: () => {},
-  user: () => {},
   logout: () => {},
   isLogin: false,
+  displayname: undefined,
 });

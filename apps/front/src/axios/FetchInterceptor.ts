@@ -31,7 +31,7 @@ service.interceptors.request.use(
   },
   (error) => {
     // Do something with request error here
-    notify.error("Une erreur est survenue, veuillez réessayer");
+    notify.error("Une erreur est survenue, veuillez réessayer.");
     Promise.reject(error);
   }
 );
@@ -40,6 +40,10 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: AxiosResponse) => {
     // If the response is a success, return it directly
+    if (response.status === 200) {
+      notify.success(response.data.message);
+    }
+
     return response;
   },
   (error) => {
@@ -65,7 +69,7 @@ service.interceptors.response.use(
 
     // Remove token and redirect
     if (error.response.status === 403) {
-      localStorage.removeItem(constants.AUTH_TOKEN_KEY);
+      localStorage.removeItem(constants.DISPLAYNAME_KEY);
     }
 
     // If the response is an error, display the error message
