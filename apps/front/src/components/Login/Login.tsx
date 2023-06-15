@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mui/material";
 import { FcManager, FcKey } from "react-icons/fc";
-import { getLogger } from "@utils/getLogger";
 import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
 import "./Login.scss";

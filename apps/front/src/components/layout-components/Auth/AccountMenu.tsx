@@ -40,7 +40,7 @@ export default function AccountMenu() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar src={elephant} sx={{ width: 32, height: 32 }} />
+          <Avatar src={elephant} alt="user-avatar" sx={{ width: 32, height: 32 }} />
         </IconButton>
       </BootstrapTooltip>
       <Menu
