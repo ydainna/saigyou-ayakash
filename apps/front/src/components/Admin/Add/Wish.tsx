@@ -1,8 +1,6 @@
 import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
-import moment from "moment";
+import { DateTime } from "luxon";
 import wishlistService from "@services/WishlistService";
-import { notify } from "@components/layout-components/Notification/Notification";
-import { getLogger } from "@utils/getLogger";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
 import "@assets/styles/Mui/Input.scss";
@@ -58,7 +56,7 @@ export default function AddWish({ isAddWishOpen, setAddWishOpen }: AddWishTypes)
               name="price"
             />
             <InputLabel htmlFor="wish-date">Date</InputLabel>
-            <Input disabled defaultValue={moment().format("YYYY-MM-DD")} id="wish-date" className="adminInput" placeholder="Date" />
+            <Input disabled defaultValue={DateTime.now().toFormat("yyyy-MM-dd")} id="wish-date" className="adminInput" placeholder="Date" />
             <Button variant="text" type="submit">
               Ajouter
             </Button>

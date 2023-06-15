@@ -1,10 +1,9 @@
 import { Box, Modal, Fade, Button } from "@mui/material";
-import "./../Admin.scss";
 import figureService from "@services/FigureService";
-import { notify } from "@components/layout-components/Notification/Notification";
 import Head from "@components/layout-components/Typography/Head";
 import Subtitle from "@components/layout-components/Typography/Subtitle";
 import { globalStateProxy } from "../../../App";
+import "./../Admin.scss";
 
 type DeleteFigureTypes = {
   isDeleteFigureOpen: boolean;

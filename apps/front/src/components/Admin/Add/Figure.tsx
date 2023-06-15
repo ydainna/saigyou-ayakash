@@ -1,9 +1,8 @@
 import { useState } from "react";
+import { DateTime } from "luxon";
 import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
 import FileUpload from "react-mui-fileuploader";
-import moment from "moment";
 import figureService from "@services/FigureService";
-import { notify } from "@components/layout-components/Notification/Notification";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
 import "@assets/styles/Mui/Input.scss";
@@ -94,7 +93,7 @@ export default function AddFigure({ isAddFigureOpen, setAddFigureOpen }: AddFigu
               name="price"
             />
             <InputLabel htmlFor="figure-date">Date</InputLabel>
-            <Input id="figure-date" defaultValue={moment().format("YYYY-MM-DD")} disabled className="adminInput" />
+            <Input id="figure-date" defaultValue={DateTime.now().toFormat("yyyy-MM-dd")} disabled className="adminInput" />
             <Button variant="text" type="submit">
               Ajouter
             </Button>
