@@ -73,11 +73,10 @@ To **run this project**, you will **need** to add the following environment vari
 `SENTRY_AUTH_TOKEN`
 
 **back** :
-`JWT_ISSUER`
-`JWT_SECRET`
 `MONGODB_URL`
 `SERVER_HOST`
 `SERVER_PORT`
+`COOKIE_SECRET`
 
 
 ## Dependencies
@@ -101,8 +100,8 @@ Front dependencies :
 - [react-toastify](https://fkhadra.github.io/react-toastify/introduction)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-mui-fileuploader](https://github.com/rouftom/react-mui-fileuploader)
-- [jwt-decode](https://github.com/auth0/jwt-decode)
 - [sentry](https://sentry.io)
+- [luxon](https://moment.github.io/luxon/#/)
 
 ## 
 
@@ -112,14 +111,12 @@ Back dependencies :
 - [HAPI and plugins](https://hapi.dev/)
 - [dotenv](https://github.com/motdotla/dotenv)
 - [joi](https://joi.dev/api/?v=17.7.0)
-- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
 - [tslog](https://tslog.js.org/#/)
 - [mongoose](https://mongoosejs.com/)
-- [moment](https://momentjs.com/)
-- [moment-timezone](https://momentjs.com/timezone/)
 - [uuid](https://github.com/uuidjs/uuid)
 - [cross-env](https://github.com/kentcdodds/cross-env)
 - [sentry](https://sentry.io)
+- [luxon](https://moment.github.io/luxon/#/)
 
 ## Authors
 
