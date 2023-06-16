@@ -13,10 +13,12 @@ export const authMiddleware = async (server: Server) => {
       if (cookie) {
         const ttl = cookie.ttl;
         if (ttl < Date.now()) {
+          request.cookieAuth.clear();
           throw Boom.unauthorized("Votre session a expiré.");
         }
       }
     } catch (error) {
+      request.cookieAuth.clear();
       throw Boom.unauthorized("Votre session a expiré.");
     }
 
