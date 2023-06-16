@@ -17,6 +17,7 @@ import { initAdminFiguresRoutes } from "./routes/admin/AdminFigures";
 import { initAdminWishlistRoutes } from "./routes/admin/AdminWishlist";
 //middleware
 import { errorMiddleware } from "./middleware/errorMiddleware";
+import { adminMiddleware } from "./middleware/adminMiddleware";
 
 export let server: Server;
 
@@ -81,6 +82,7 @@ export const init = async (): Promise<Server> => {
 
   // Register middleware
   await errorMiddleware(server);
+  await adminMiddleware(server);
 
   // Connect to database
   await Database.connect();

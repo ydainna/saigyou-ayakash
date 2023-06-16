@@ -68,7 +68,7 @@ service.interceptors.response.use(
     }
 
     // Remove token and redirect
-    if (error.response.status === 403) {
+    if (error.response.status === 401) {
       localStorage.removeItem(constants.DISPLAYNAME_KEY);
     }
 
