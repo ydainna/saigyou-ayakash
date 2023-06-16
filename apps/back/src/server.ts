@@ -1,17 +1,18 @@
 import Hapi from "@hapi/hapi";
-import { Server } from "@hapi/hapi";
-import { getLogger } from "./utils/getLogger";
-import { Database } from "./database/mongo";
-import * as Sentry from "@sentry/node";
 import CookiePlugin from "@hapi/cookie";
-//Controllers db
+import { Server } from "@hapi/hapi";
+import * as Sentry from "@sentry/node";
+//utils
+import { getLogger } from "./utils/getLogger";
+//db
+import { Database } from "./database/mongo";
 import { UserController } from "./database/controllers/UserController";
-//Public routes
+//public routes
 import { initFiguresRoutes } from "./routes/public/figures";
 import { initLoginRoutes } from "./routes/public/login";
 import { initWishlistRoutes } from "./routes/public/wishlist";
 import { initPictureRoutes } from "./routes/public/picture";
-//Admin routes
+//admin routes
 import { initAdminFiguresRoutes } from "./routes/admin/AdminFigures";
 import { initAdminWishlistRoutes } from "./routes/admin/AdminWishlist";
 //middleware

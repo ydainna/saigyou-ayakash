@@ -26,7 +26,7 @@ export const initLoginRoutes = async (server: Server) => {
       });
 
       if (!user) {
-        throw Boom.unauthorized("Nom de compte ou mot de passe incorrect");
+        throw Boom.unauthorized("Nom de compte ou mot de passe incorrect !");
       }
 
       // Set auth
@@ -37,7 +37,7 @@ export const initLoginRoutes = async (server: Server) => {
 
       const data = {
         displayName: user.displayName,
-        message: "Vous désormais êtes connecté.",
+        message: "Vous êtes désormais êtes connecté.",
       };
 
       return h.response(data).code(200);
@@ -50,7 +50,7 @@ export const initLoginRoutes = async (server: Server) => {
     path: "/admin/logout",
     handler: async (request: Request, h: ResponseToolkit) => {
       if (!request.auth.isAuthenticated) {
-        throw Boom.unauthorized("Vous n'êtes pas connecté");
+        throw Boom.unauthorized("Vous n'êtes pas connecté !");
       }
 
       request.cookieAuth.clear();
