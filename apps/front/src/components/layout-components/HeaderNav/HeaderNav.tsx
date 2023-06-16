@@ -39,7 +39,9 @@ export default function HeaderNav() {
               Collection
             </Button>
           </li>
-          <img className="logo" src="images/logo.svg" alt="Header logo, blue cherry blossom" />
+          <li className="nav-item">
+            <img className="logo" src="images/logo.svg" alt="Header logo, blue cherry blossom" />
+          </li>
           <li className="nav-item">
             <Button variant="text" onClick={() => navigate("/wishlist")}>
               Wishlist
