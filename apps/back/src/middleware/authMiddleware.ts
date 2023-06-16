@@ -13,11 +13,11 @@ export const authMiddleware = async (server: Server) => {
       if (cookie) {
         const ttl = cookie.ttl;
         if (ttl < Date.now()) {
-          throw Boom.unauthorized("Your session has expired");
+          throw Boom.unauthorized("Votre session a expiré.");
         }
       }
     } catch (error) {
-      throw Boom.unauthorized("Your session has expired");
+      throw Boom.unauthorized("Votre session a expiré.");
     }
 
     return h.continue;
