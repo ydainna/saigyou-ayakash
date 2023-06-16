@@ -1,7 +1,7 @@
 import { Request, Server, ResponseToolkit } from "@hapi/hapi";
 import Boom from "@hapi/boom";
 
-export const adminMiddleware = async (server: Server) => {
+export const authMiddleware = async (server: Server) => {
   server.ext("onPreHandler", (request: Request, h: ResponseToolkit) => {
     if (request.method === "options") {
       return h.continue;
