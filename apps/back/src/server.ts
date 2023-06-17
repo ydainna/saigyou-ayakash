@@ -17,7 +17,6 @@ import { initAdminFiguresRoutes } from "./routes/admin/AdminFigures";
 import { initAdminWishlistRoutes } from "./routes/admin/AdminWishlist";
 //middleware
 import { errorMiddleware } from "./middleware/errorMiddleware";
-import { authMiddleware } from "./middleware/authMiddleware";
 
 export let server: Server;
 
@@ -54,7 +53,8 @@ export const init = async (): Promise<Server> => {
       isSecure: process.env.NODE_ENV !== "dev",
       isHttpOnly: true,
       path: "/",
-      ttl: 1000 * 60 * 60 * 24 * 7, // 1 week
+      //30sec
+      ttl: 1000 * 30,
       clearInvalid: true,
       strictHeader: true,
     },
@@ -82,7 +82,6 @@ export const init = async (): Promise<Server> => {
 
   // Register middleware
   await errorMiddleware(server);
-  await authMiddleware(server);
 
   // Connect to database
   await Database.connect();
