@@ -53,8 +53,7 @@ export const init = async (): Promise<Server> => {
       isSecure: process.env.NODE_ENV !== "dev",
       isHttpOnly: true,
       path: "/",
-      //30sec
-      ttl: 1000 * 30,
+      ttl: 1000 * 60 * 60 * 24 * 7, // 1 week
       clearInvalid: true,
       strictHeader: true,
     },
