@@ -163,7 +163,7 @@ export default function FigureDataTable() {
                   return (
                     <TableRow hover key={row.uuid}>
                       <TableCell>
-                        <Tooltip title="Cliquez sur l'image pour l'agrandir" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                        <Tooltip arrow title="Cliquez sur l'image pour l'agrandir" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                           <Avatar
                             src={`${constants.API_URL}/img/${row.img}`}
                             variant="rounded"

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import Tooltip from "@mui/material/Tooltip";
-import { Fade } from "@mui/material";
+import { Tooltip, Fade } from "@mui/material";
 import { DateTime } from "luxon";
 import euro from "@assets/img/icons/statistic/euro.svg";
 import figure from "@assets/img/icons/statistic/figure.svg";
@@ -24,7 +23,7 @@ export default function Stats() {
   return (
     <>
       <div className="statistic">
-        <Tooltip title="Prix totale de la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+        <Tooltip arrow title="Prix totale de la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
           <div className="statistic-body">
             <div className="statistic-title">
               <Head variant="h6" content="Prix total" />
@@ -53,7 +52,7 @@ export default function Stats() {
             </div>
           </div>
         </Tooltip>
-        <Tooltip title="Nombre de figurine dans la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+        <Tooltip arrow title="Nombre de figurine dans la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
           <div className="statistic-body">
             <div className="statistic-title">
               <Head variant="h6" content="Nombre de figurines" />
@@ -82,7 +81,7 @@ export default function Stats() {
             </div>
           </div>
         </Tooltip>
-        <Tooltip title="Mise à jour de la liste" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+        <Tooltip arrow title="Mise à jour de la liste" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
           <div className="statistic-body">
             <div className="statistic-title">
               <Head variant="h6" content="Dernière mise à jour" />

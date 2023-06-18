@@ -3,6 +3,10 @@
 .MuiTooltip-tooltip {
   background-color: $tooltipBackgroundColor;
   font-size: 14px;
-  border-radius: 0px;
   padding: 10px;
+}
+
+/*arrow*/
+.MuiTooltip-arrow {
+  color: $tooltipBackgroundColor;
 }
