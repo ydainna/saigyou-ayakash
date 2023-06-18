@@ -16,7 +16,7 @@ const service = axios.create({
 
 // API Request interceptor
 service.interceptors.request.use(
-  (config) => {
+  (config: InternalAxiosRequestConfig) => {
     // If no content type header is set, set it to application/json
     if (!config.headers["Content-Type"]) {
       config.headers["Content-Type"] = "application/json";

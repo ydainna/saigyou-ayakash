@@ -3,12 +3,13 @@ import figureService from "@services/FigureService";
 import Head from "@components/layout-components/Typography/Head";
 import Subtitle from "@components/layout-components/Typography/Subtitle";
 import { globalStateProxy } from "../../../App";
+import { IFigure } from "@saigyou-ayakash/types";
 import "./../Admin.scss";
 
 type DeleteFigureTypes = {
   isDeleteFigureOpen: boolean;
   setDeleteFigureOpen: (isOpen: boolean) => void;
-  deleteFigureId: string;
+  deleteFigureId: IFigure["uuid"];
 };
 
 export default function DeleteFigure({ isDeleteFigureOpen, setDeleteFigureOpen, deleteFigureId }: DeleteFigureTypes) {
@@ -16,7 +17,7 @@ export default function DeleteFigure({ isDeleteFigureOpen, setDeleteFigureOpen, 
     setDeleteFigureOpen(!isDeleteFigureOpen);
   };
 
-  const handleDelete = (uuid: string) => {
+  const handleDelete = (uuid: IFigure["uuid"]) => {
     figureService.deleteFigure(uuid).then(() => {
       globalStateProxy.refetchFigures();
       globalStateProxy.refetchStats();

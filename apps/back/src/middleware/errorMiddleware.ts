@@ -9,6 +9,7 @@ export const errorMiddleware = async (server: Server) => {
       const log = getLogger("Boom");
       log.error(response);
     }
+
     return h.continue;
   });
 };

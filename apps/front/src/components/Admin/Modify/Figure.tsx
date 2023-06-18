@@ -4,20 +4,12 @@ import figureService from "@services/FigureService";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
 import "@assets/styles/Mui/Input.scss";
-
-type ModifyFigureDataTypes = {
-  uuid: string;
-  name: string;
-  origin: string;
-  maker: string;
-  version: string;
-  price: number;
-};
+import { IFigure } from "@saigyou-ayakash/types";
 
 type ModifyFigureTypes = {
   isModifyFigureOpen: boolean;
   setModifyFigureOpen: (isOpen: boolean) => void;
-  modifyFigureData: ModifyFigureDataTypes;
+  modifyFigureData: IFigure;
 };
 
 export default function ModifyFigure({ isModifyFigureOpen, setModifyFigureOpen, modifyFigureData }: ModifyFigureTypes) {

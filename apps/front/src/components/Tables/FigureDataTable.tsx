@@ -31,6 +31,7 @@ import Subtitle from "@components/layout-components/Typography/Subtitle";
 import Loader from "@components/layout-components/Loader/Loader";
 import DeleteFigure from "@components/Admin/Delete/Figure";
 import { IFigure } from "@saigyou-ayakash/types";
+import { IfInvalid } from "luxon/src/_util";
 
 const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tooltip {...props} arrow classes={{ popper: className }} />)(
   ({ theme }) => ({
@@ -47,10 +48,10 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tool
 export default function FigureDataTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [figureImage, setFigureImage] = useState("");
+  const [figureImage, setFigureImage] = useState<IFigure["img"]>("");
   const [modifyFigureData, setModifyFigureData] = useState<IFigure>({} as IFigure);
-  const [figureName, setFigureName] = useState("");
-  const [figureId, setFigureId] = useState("");
+  const [figureName, setFigureName] = useState<IFigure["name"]>("");
+  const [figureId, setFigureId] = useState<IFigure["uuid"]>("");
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [isLightboxOpen, setLightboxOpen] = useState(false);
@@ -72,12 +73,12 @@ export default function FigureDataTable() {
     setAddFigureOpen(true);
   };
 
-  const handleModifyFigureOpen = (row: any) => {
+  const handleModifyFigureOpen = (row: IFigure) => {
     setModifyFigureOpen(true);
     setModifyFigureData(row);
   };
 
-  const handleDeleteFigureOpen = (figureUuid: string) => {
+  const handleDeleteFigureOpen = (figureUuid: IFigure["uuid"]) => {
     setFigureId(figureUuid);
     setDeleteFigureOpen(true);
   };
@@ -101,7 +102,7 @@ export default function FigureDataTable() {
     setSearch(event.target.value);
   };
 
-  const handleLightboxOpen = (image: string, name: string) => {
+  const handleLightboxOpen = (image: IFigure["img"], name: IFigure["name"]) => {
     setFigureImage(constants.API_URL + "/img/" + image);
     setFigureName(name);
     setLightboxOpen(true);
