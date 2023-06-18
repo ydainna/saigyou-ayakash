@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import { Fade, styled } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
+import { Fade } from "@mui/material";
 import { DateTime } from "luxon";
 import euro from "@assets/img/icons/statistic/euro.svg";
 import figure from "@assets/img/icons/statistic/figure.svg";
@@ -11,18 +11,6 @@ import Head from "@components/layout-components/Typography/Head";
 import "./Stats.scss";
 import { globalStateProxy } from "../../App";
 import Loader from "@components/layout-components/Loader/Loader";
-
-const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tooltip {...props} arrow classes={{ popper: className }} />)(
-  ({ theme }) => ({
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.palette.common.black,
-    },
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.black,
-      fontSize: 14,
-    },
-  })
-);
 
 export default function Stats() {
   const { isLoading, error, data, refetch } = useQuery({
@@ -36,7 +24,7 @@ export default function Stats() {
   return (
     <>
       <div className="statistic">
-        <BootstrapTooltip title="Prix totale de la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+        <Tooltip title="Prix totale de la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
           <div className="statistic-body">
             <div className="statistic-title">
               <Head variant="h6" content="Prix total" />
@@ -64,8 +52,8 @@ export default function Stats() {
               </span>
             </div>
           </div>
-        </BootstrapTooltip>
-        <BootstrapTooltip title="Nombre de figurine dans la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+        </Tooltip>
+        <Tooltip title="Nombre de figurine dans la collection" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
           <div className="statistic-body">
             <div className="statistic-title">
               <Head variant="h6" content="Nombre de figurines" />
@@ -93,8 +81,8 @@ export default function Stats() {
               </span>
             </div>
           </div>
-        </BootstrapTooltip>
-        <BootstrapTooltip title="Mise à jour de la liste" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+        </Tooltip>
+        <Tooltip title="Mise à jour de la liste" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
           <div className="statistic-body">
             <div className="statistic-title">
               <Head variant="h6" content="Dernière mise à jour" />
@@ -122,7 +110,7 @@ export default function Stats() {
               </span>
             </div>
           </div>
-        </BootstrapTooltip>
+        </Tooltip>
       </div>
     </>
   );

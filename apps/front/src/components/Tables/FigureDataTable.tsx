@@ -14,9 +14,8 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  styled,
 } from "@mui/material";
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
+import Tooltip from "@mui/material/Tooltip";
 import { FcSearch, FcPlus, FcFullTrash, FcEditImage } from "react-icons/fc";
 import Lightbox from "@components/layout-components/Lightbox/Lightbox";
 import figureService from "@services/FigureService";
@@ -26,24 +25,12 @@ import { constants } from "@utils/constants";
 import { AuthContext } from "./../../auth/AuthContext";
 import "@assets/styles/Mui/Datatable.scss";
 import "@assets/styles/Mui/Input.scss";
+import "@assets/styles/Mui/Tooltip.scss";
 import { globalStateProxy } from "../../App";
 import Subtitle from "@components/layout-components/Typography/Subtitle";
 import Loader from "@components/layout-components/Loader/Loader";
 import DeleteFigure from "@components/Admin/Delete/Figure";
 import { IFigure } from "@saigyou-ayakash/types";
-import { IfInvalid } from "luxon/src/_util";
-
-const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tooltip {...props} arrow classes={{ popper: className }} />)(
-  ({ theme }) => ({
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.palette.common.black,
-    },
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.black,
-      fontSize: 14,
-    },
-  })
-);
 
 export default function FigureDataTable() {
   const [page, setPage] = useState(0);
@@ -176,7 +163,7 @@ export default function FigureDataTable() {
                   return (
                     <TableRow hover key={row.uuid}>
                       <TableCell>
-                        <BootstrapTooltip title="Cliquez sur l'image pour l'agrandir" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
+                        <Tooltip title="Cliquez sur l'image pour l'agrandir" TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}>
                           <Avatar
                             src={`${constants.API_URL}/img/${row.img}`}
                             variant="rounded"
@@ -184,7 +171,7 @@ export default function FigureDataTable() {
                             onClick={() => handleLightboxOpen(row.img, row.name)}
                             alt={row.name}
                           />
-                        </BootstrapTooltip>
+                        </Tooltip>
                       </TableCell>
                       <TableCell>{row.name}</TableCell>
                       <TableCell>{row.origin}</TableCell>
