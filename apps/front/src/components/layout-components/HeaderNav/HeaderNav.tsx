@@ -1,24 +1,11 @@
 import { useState, useContext } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { Button, IconButton, styled } from "@mui/material";
+import { Button, IconButton, Tooltip } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import "./HeaderNav.scss";
 import Login from "@components/Login/Login";
 import { AuthContext } from "./../../../auth/AuthContext";
 import AccountMenu from "../Auth/AccountMenu";
-
-const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => <Tooltip {...props} arrow classes={{ popper: className }} />)(
-  ({ theme }) => ({
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.palette.common.black,
-    },
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.black,
-      fontSize: 14,
-    },
-  })
-);
 
 export default function HeaderNav() {
   const [isLoginOpen, setLoginOpen] = useState<boolean>(false);
@@ -49,11 +36,11 @@ export default function HeaderNav() {
           </li>
           <li className="nav-item">
             {!isLogin ? (
-              <BootstrapTooltip title="Login" placement="bottom">
+              <Tooltip arrow title="Login" placement="bottom">
                 <IconButton onClick={handleLoginOpen}>
                   <LoginIcon />
                 </IconButton>
-              </BootstrapTooltip>
+              </Tooltip>
             ) : (
               <AccountMenu />
             )}
