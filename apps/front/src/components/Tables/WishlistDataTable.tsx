@@ -7,7 +7,6 @@ import AddWish from "./../Admin/Add/Wish";
 import wishlistService from "@services/WishlistService";
 import { notify } from "@components/layout-components/Notification/Notification";
 import { AuthContext } from "./../../auth/AuthContext";
-import "@assets/styles/Mui/Datatable.scss";
 import { globalStateProxy } from "../../App";
 import Loader from "@components/layout-components/Loader/Loader";
 import Subtitle from "@components/layout-components/Typography/Subtitle";

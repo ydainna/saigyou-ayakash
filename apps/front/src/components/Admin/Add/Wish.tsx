@@ -3,7 +3,6 @@ import { DateTime } from "luxon";
 import wishlistService from "@services/WishlistService";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
-import "@assets/styles/Mui/Input.scss";
 
 type AddWishTypes = {
   isAddWishOpen: boolean;

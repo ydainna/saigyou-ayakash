@@ -3,7 +3,6 @@ import { Box, Modal, Fade, Input, Button, InputLabel } from "@mui/material";
 import figureService from "@services/FigureService";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
-import "@assets/styles/Mui/Input.scss";
 import { IFigure } from "@saigyou-ayakash/types";
 
 type ModifyFigureTypes = {

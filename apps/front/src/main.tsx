@@ -10,6 +10,10 @@ import AuthProvider from "./auth/AuthProvider";
 import { constants } from "@utils/constants";
 import "./index.scss";
 import "react-toastify/dist/ReactToastify.min.css";
+import "@assets/styles/Mui/Alerte.scss";
+import "@assets/styles/Mui/Datatable.scss";
+import "@assets/styles/Mui/Input.scss";
+import "@assets/styles/Mui/Tooltip.scss";
 
 const darkTheme = createTheme({
   palette: {

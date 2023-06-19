@@ -4,7 +4,6 @@ import { FcManager, FcKey } from "react-icons/fc";
 import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
 import "./Login.scss";
-import "@assets/styles/Mui/Input.scss";
 
 type LoginTypes = {
   isLoginOpen: boolean;

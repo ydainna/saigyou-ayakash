@@ -1,6 +1,5 @@
 import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import '@assets/styles/Mui/Alerte.scss';
+import AlertTitle from "@mui/material/AlertTitle";
 import "./WishlistInformation.scss";
 
 export default function WishlistInformation() {

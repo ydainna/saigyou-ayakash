@@ -5,7 +5,6 @@ import FileUpload from "react-mui-fileuploader";
 import figureService from "@services/FigureService";
 import { globalStateProxy } from "../../../App";
 import "./../Admin.scss";
-import "@assets/styles/Mui/Input.scss";
 
 type AddFigureTypes = {
   isAddFigureOpen: boolean;
