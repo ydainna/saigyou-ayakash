@@ -7,6 +7,29 @@ $headerNavBackgroundColor: hsl(218, 25%, 21%);
 $headerNavBoxShadow: 0 1px 8px -1px hsla(0, 0%, 0%, 0.75);
 $headerNavTextColor: hsl(220, 25%, 76%);
 $headerNavHoverItemBackgroundColor: hsl(219, 25%, 16%);
+
+/*statistic*/
+$statisticTitleColor: hsl(210, 15%, 76%);
+$statisticContentValueIntColor: hsl(230, 8%, 85%);
+
+/*login*/
+$loginBoxBackgroundColor: hsl(218, 25%, 21%);
+
+/*footer*/
+$footerBorderTop: 1px solid hsl(219, 21%, 38%);
+$footerColor: hsl(220, 25%, 76%);
+
+/*lightBox*/
+$lightBoxBackgroundColor: hsla(0, 1%, 0%, 0.5);
+
+/*admin*/
+$adminBoxBackgroundColor: hsl(218, 25%, 21%);
+
+
+/* ---------- MUI variables styles ---------- */
+/*tootltip (MUI)*/
+$tooltipBackgroundColor: hsl(0, 0%, 4%);
+
 /*header button (MUI)*/
 $headerNavButtonTextColor: hsl(220, 25%, 76%);
 $headerNavButtonRootIconColor: hsl(220, 25%, 76%);
@@ -29,23 +52,3 @@ $datatablePaginationSelectColor: hsl(220, 25%, 76%);
 $datatablePaginationDisplayRowsColor: hsl(220, 25%, 76%);
 $datatablePaginationActionsColor: hsl(220, 25%, 76%);
 $datatablePaginationSelectIconColor: hsl(220, 25%, 76%);
-
-/*statistic*/
-$statisticTitleColor: hsl(210, 15%, 76%);
-$statisticContentValueIntColor: hsl(230, 8%, 85%);
-
-/*login*/
-$loginBoxBackgroundColor: hsl(218, 25%, 21%);
-
-/*footer*/
-$footerBorderTop: 1px solid hsl(219, 21%, 38%);
-$footerColor: hsl(220, 25%, 76%);
-
-/*lightBox*/
-$lightBoxBackgroundColor: hsla(0, 1%, 0%, 0.5);
-
-/*admin*/
-$adminBoxBackgroundColor: hsl(218, 25%, 21%);
-
-/*tootltip*/
-$tooltipBackgroundColor: hsl(0, 0%, 4%)

@@ -1,8 +1,8 @@
+import { Alert, AlertTitle } from "@mui/material";
 import Footer from "@components/layout-components/Footer/Footer";
 import HeaderNav from "@components/layout-components/HeaderNav/HeaderNav";
-import { Player } from "@lottiefiles/react-lottie-player";
 import Head from "@components/layout-components/Typography/Head";
-import notfound from "./../assets/lottie/notFound.json";
+import notfound from "./../assets/img/404.jpg";
 import "@assets/styles/Pages/Notfound.scss";
 
 export default function NotFound() {
@@ -10,15 +10,19 @@ export default function NotFound() {
     <div className="notfound">
       <HeaderNav />
       <div className="notfound-body">
-        <Player autoplay loop src={notfound} style={{ height: "350px", width: "350px" }} />
+        <img src={notfound} alt="404" className="notfound-img" />
         <div className="notfound-text">
-          <Head variant="h1" content="404" />
+          <Alert severity="error">
+            <AlertTitle>Erreur 404</AlertTitle>
+            Mince alors ! il semblerais que la page n'existe pas... <br />
+            <strong>Revenez en arrière</strong> ou <strong>retournez à l'accueil</strong>.
+          </Alert>
         </div>
       </div>
       <Footer />
       {/*
         __                 
-        '. \  🅷🅴🅻🅻🅾, 🅼🆈 🅽🅰🅼🅴 🅸🆂 🅴🅻🅼🅴🆁 ❗
+       '. \  🅷🅴🅻🅻🅾, 🅼🆈 🅽🅰🅼🅴 🅸🆂 🅴🅻🅼🅴🆁 ❗
         '- \               
           / /_         .---.
         / | \\,.\/--.//    )
@@ -26,7 +30,7 @@ export default function NotFound() {
           \  ' ^ ^    /    )____.----..  6
           '.____.    .___/            \._) 
               .\/.                      )
-              '\                       /
+              '\            🌸        /
               _/ \/    ).        )    (
               /#  .!    |        /\    /
               \  C// #  /'-----''/ #  / 
