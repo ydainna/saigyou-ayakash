@@ -16,7 +16,7 @@
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.13.7",
-    "@sentry/react": "^7.57.0",
+    "@sentry/react": "^7.58.0",
     "@sentry/tracing": "^7.58.0",
     "@tanstack/react-query": "^4.29.19",
     "@tanstack/react-query-devtools": "^4.29.19",
