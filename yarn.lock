@@ -959,15 +959,15 @@
     "@sentry/utils" "7.61.0"
     tslib "^2.4.1 || ^1.9.3"
 
-"@sentry/node@^7.60.0", "@sentry/node@^7.60.1":
-  version "7.60.1"
-  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-7.60.1.tgz#18e287995445588ebea630aed3932a3d21dda9ab"
-  integrity sha512-lBt3RqncY4XbzM+PlTbH/tUWeOsm24anwEzvA2DSDP1NL3WZ5MdvT77q7NqpvpVNd2LeGAQ6x7AXDzE53YBfnQ==
+"@sentry/node@^7.60.0", "@sentry/node@^7.61.0":
+  version "7.61.0"
+  resolved "https://registry.yarnpkg.com/@sentry/node/-/node-7.61.0.tgz#1309330f2ad136af532ad2a03b2a312e885705de"
+  integrity sha512-oTCqD/h92uvbRCrtCdiAqN6Mfe3vF7ywVHZ8Nq3hHmJp6XadUT+fCBwNQ7rjMyqJAOYAnx/vp6iN9n8C5qcYZQ==
   dependencies:
-    "@sentry-internal/tracing" "7.60.1"
-    "@sentry/core" "7.60.1"
-    "@sentry/types" "7.60.1"
-    "@sentry/utils" "7.60.1"
+    "@sentry-internal/tracing" "7.61.0"
+    "@sentry/core" "7.61.0"
+    "@sentry/types" "7.61.0"
+    "@sentry/utils" "7.61.0"
     cookie "^0.4.1"
     https-proxy-agent "^5.0.0"
     lru_map "^0.3.3"
