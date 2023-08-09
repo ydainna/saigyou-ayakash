@@ -993,12 +993,12 @@
     "@sentry/types" "7.61.0"
     "@sentry/utils" "7.61.0"
 
-"@sentry/tracing@^7.61.0":
-  version "7.61.0"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.61.0.tgz#d4ca61eba9a5e21bd021b7f1904c6f503a7d28c4"
-  integrity sha512-asGbw3n04qkM5zUCPlGg9i52GEHq9Nmore38SJFN0L4N/YH6EPJLEUfNm2jFvXWCo96kq/dPKnyjOEuPccwhIA==
+"@sentry/tracing@^7.62.0":
+  version "7.62.0"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.62.0.tgz#0480455ce5706ef24fbb588e32d6c6710c279137"
+  integrity sha512-3QuThslt43m6Ui4AVAVCjlfQYeRhlRJJpFDrQd60WfRWXEeTr00VSRmIDfPUKmBFBDiXK+xXjTb/uMUM3ZeDOg==
   dependencies:
-    "@sentry-internal/tracing" "7.61.0"
+    "@sentry-internal/tracing" "7.62.0"
 
 "@sentry/types@7.61.0":
   version "7.61.0"
