@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "turbo": "^1.10.12"
+    "turbo": "^1.10.13"
   }
 }
