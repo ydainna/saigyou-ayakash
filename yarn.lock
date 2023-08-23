@@ -2939,10 +2939,10 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.0.tgz#b295854684dbda164e181d259a22cd779dcd7bc3"
   integrity sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==
 
-tslog@^4.9.1:
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/tslog/-/tslog-4.9.1.tgz#b395bf003de35ed1537bbb97d1e180280debae09"
-  integrity sha512-N6SkH+ApNh65tyKV7CfXmcShfw7KTnoTASQkKr+nZbhM73iwi/3a9ZJeYKRRvboLxkx3UNnNViMo1s/hNdSZLg==
+tslog@^4.9.2:
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/tslog/-/tslog-4.9.2.tgz#35de3a073784dfe3849caeaa028010c7a62b7f4a"
+  integrity sha512-wBM+LRJoNl34Bdu8mYEFxpvmOUedpNUwMNQB/NcuPIZKwdDde6xLHUev3bBjXQU7gdurX++X/YE7gLH8eXYsiQ==
 
 turbo-darwin-64@1.10.13:
   version "1.10.13"
