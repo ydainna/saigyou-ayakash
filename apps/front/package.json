@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
     "@lottiefiles/react-lottie-player": "^3.5.3",
-    "@mui/icons-material": "^5.14.3",
+    "@mui/icons-material": "^5.14.6",
     "@mui/material": "^5.14.6",
     "@sentry/react": "^7.64.0",
     "@sentry/tracing": "^7.64.0",
