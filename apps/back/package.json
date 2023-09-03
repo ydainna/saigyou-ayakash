@@ -17,7 +17,7 @@
     "@hapi/hapi": "^21.3.2",
     "@hapi/hoek": "^11.0.2",
     "@hapi/inert": "^7.1.0",
-    "@sentry/node": "^7.64.0",
+    "@sentry/node": "^7.66.0",
     "@sentry/tracing": "^7.66.0",
     "dotenv": "^16.3.1",
     "joi": "^17.9.2",
