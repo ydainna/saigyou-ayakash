@@ -1021,12 +1021,12 @@
     "@sentry/types" "7.66.0"
     "@sentry/utils" "7.66.0"
 
-"@sentry/tracing@^7.64.0":
-  version "7.64.0"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.64.0.tgz#994a779d6c8b810b98784b33eb6defd014303913"
-  integrity sha512-Php0XnnJolfxkFdgLlgwgRz3bgHmu/7gDRQaGQHJeDgCCjrmNHI+sHi8zmkWCWSO0Z1mi111n2ZUr9B9YLPBTg==
+"@sentry/tracing@^7.66.0":
+  version "7.66.0"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-7.66.0.tgz#32e0e4c049abcbdbba793afdfe177f3d112242cf"
+  integrity sha512-9bnz2EcOwjeMZAuYJnrwcRrImu9c10p7A0iDB8b2HLcp7gpuCkJbJyGoC1xeKD7reVD0BPq3VIbeHSwCcQufoQ==
   dependencies:
-    "@sentry-internal/tracing" "7.64.0"
+    "@sentry-internal/tracing" "7.66.0"
 
 "@sentry/types@7.64.0":
   version "7.64.0"
