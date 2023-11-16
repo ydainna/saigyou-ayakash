@@ -32,7 +32,7 @@ export namespace FigureController {
   // sql: SELECT COUNT(*) AS totalCount, SUM(price) AS totalPrice, MAX(date) AS lastDate FROM figures
   export async function getStats() {
     // Get the total count of figures
-    const totalCount = await FigureModel.count();
+    const totalCount = await FigureModel.countDocuments();
     // Get the total price of figures
     const totalPrice = await FigureModel.aggregate([
       {
