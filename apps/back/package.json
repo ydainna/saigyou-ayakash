@@ -31,7 +31,7 @@
     "@saigyou-ayakash/types": "*",
     "@types/hapi__cookie": "^12.0.5",
     "@types/luxon": "^3.3.4",
-    "@types/node": "^18.17.15",
+    "@types/node": "^18.19.4",
     "@types/node-forge": "^1.3.9",
     "@types/uuid": "^9.0.7",
     "@types/validator": "^13.11.6",
