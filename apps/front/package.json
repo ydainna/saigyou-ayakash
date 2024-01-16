@@ -17,7 +17,7 @@
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "@sentry/react": "^7.80.1",
-    "@sentry/tracing": "^7.80.1",
+    "@sentry/tracing": "^7.93.0",
     "@tanstack/react-query": "^5.8.4",
     "@tanstack/react-query-devtools": "^5.8.4",
     "axios": "^1.6.2",
