@@ -14,12 +14,16 @@ const config: Config = {
       backgroundColor: {
         body: "#1b2531",
         paper: "#293243",
-        "button-primary": "#768A96",
-        "button-secondary": "#AAC7D8",
+        "primary-button-hover": "#DFEBF6",
+        "hover-nav-button": "hsla(207, 90%, 77%, 0.08)",
       },
       textColor: {
-        primary: "#B3BDD1",
+        primary: "#B9C1D5",
         secondary: "#D6D7DC",
+        "primary-button": "#DFEBF6",
+      },
+      borderColor: {
+        "primary-button": "#DFEBF6",
       },
       fontSize: {
         base: "1rem",
