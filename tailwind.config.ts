@@ -13,17 +13,17 @@ const config: Config = {
       },
       backgroundColor: {
         body: "#1b2531",
-        paper: "#4362a0",
+        paper: "#293243",
         "button-primary": "#768A96",
         "button-secondary": "#AAC7D8",
       },
       textColor: {
-        "text-primary": "#B3BDD1",
-        "text-secondary": "#D6D7DC",
+        primary: "#B3BDD1",
+        secondary: "#D6D7DC",
       },
       fontSize: {
-        "text-base": "1rem",
-        "text-title": "1.25rem",
+        base: "1rem",
+        title: "1.25rem",
       },
       boxShadow: {
         nav: "0 1px 4px 0 rgb(0 0 0 / 37%)",
