@@ -21,6 +21,10 @@ const config: Config = {
         "text-primary": "#B3BDD1",
         "text-secondary": "#D6D7DC",
       },
+      fontSize: {
+        "text-base": "1rem",
+        "text-title": "1.25rem",
+      },
       boxShadow: {
         nav: "0 1px 4px 0 rgb(0 0 0 / 37%)",
       },
