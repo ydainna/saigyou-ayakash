@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Bars3Icon, LockClosedIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import Drawer from "./Drawer";
+import { items } from "./Config";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -16,14 +18,31 @@ export default function Navbar() {
         </div>
         <div className="flex flex-1 items-center justify-center space-x-8">
           <div className="hidden md:flex flex-row space-x-8">
-            <button className="relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded">Dashboard</button>
+            {items.slice(0, Math.floor(items.length / 2)).map((item) => (
+              <Link href={item.href}>
+                <button
+                  key={item.title}
+                  className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded"
+                >
+                  {item.icon} {<span>{item.title}</span>}
+                </button>
+              </Link>
+            ))}
           </div>
           <div className="!ml-0 md:!ml-8">
             <Image src="/favicon.png" alt="Saigyou Ayakash" width={60} height={60} />
           </div>
           <div className="hidden md:flex flex-row space-x-8">
-            <button className="relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded">Collection</button>
-            <button className="relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded">Wishlist</button>
+            {items.slice(Math.floor(items.length / 2)).map((item) => (
+              <Link href={item.href}>
+                <button
+                  key={item.title}
+                  className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded"
+                >
+                  {item.icon} {<span>{item.title}</span>}
+                </button>
+              </Link>
+            ))}
           </div>
         </div>
         <button className="flex items-center hover:bg-hover-nav-button px-1.5 py-2 rounded">

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Layout-components/Nav/Navbar";
 
 const roboto = Roboto({
   weight: "400",
