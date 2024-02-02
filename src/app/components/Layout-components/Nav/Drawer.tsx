@@ -13,10 +13,7 @@ export default function Drawer(props: DrawerProps) {
         <div className="font-bold text-2xl">Menu</div>
         <div className="flex flex-col space-y-2 mt-4 text-primary">
           {items.map((item) => (
-            <button
-              key={item.title}
-              className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded"
-            >
+            <button key={item.title} className="flex flex-row space-x-5 relative text-md hover:bg-hover-nav-button px-1.5 py-2 rounded">
               {item.icon} {<span>{item.title}</span>}
             </button>
           ))}

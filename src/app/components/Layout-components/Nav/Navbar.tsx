@@ -19,11 +19,8 @@ export default function Navbar() {
         <div className="flex flex-1 items-center justify-center space-x-8">
           <div className="hidden md:flex flex-row space-x-8">
             {items.slice(0, Math.floor(items.length / 2)).map((item) => (
-              <Link href={item.href}>
-                <button
-                  key={item.title}
-                  className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded"
-                >
+              <Link key={`left-${item.title}`} href={item.href}>
+                <button className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded">
                   {item.icon} {<span>{item.title}</span>}
                 </button>
               </Link>
@@ -34,11 +31,8 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex flex-row space-x-8">
             {items.slice(Math.floor(items.length / 2)).map((item) => (
-              <Link href={item.href}>
-                <button
-                  key={item.title}
-                  className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded"
-                >
+              <Link key={`right-${item.title}`} href={item.href}>
+                <button className="flex flex-row space-x-2 relative justify-center items-center text-md hover:bg-hover-nav-button px-1.5 py-2 rounded">
                   {item.icon} {<span>{item.title}</span>}
                 </button>
               </Link>

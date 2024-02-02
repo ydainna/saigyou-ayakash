@@ -16,9 +16,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} bg-body flex flex-col h-screen`}>
-        <Navbar />
-        {children}
+      <body className={roboto.className}>
+        <div className="bg-body flex flex-col h-screen">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
