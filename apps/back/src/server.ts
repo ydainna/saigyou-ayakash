@@ -17,6 +17,7 @@ import { initAdminFiguresRoutes } from "./routes/admin/AdminFigures";
 import { initAdminWishlistRoutes } from "./routes/admin/AdminWishlist";
 //middleware
 import { errorMiddleware } from "./middleware/errorMiddleware";
+import { initApi } from "./routes/public/home";
 
 export let server: Server;
 
@@ -38,6 +39,8 @@ export const init = async (): Promise<Server> => {
   // Register plugins
   await server.register(require("@hapi/inert"));
   await server.register(CookiePlugin);
+
+  await initApi(server);
 
   // Register public routes
   await initLoginRoutes(server);
