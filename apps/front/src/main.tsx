@@ -14,6 +14,7 @@ import "@assets/styles/Mui/Alerte.scss";
 import "@assets/styles/Mui/Datatable.scss";
 import "@assets/styles/Mui/Input.scss";
 import "@assets/styles/Mui/Tooltip.scss";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const darkTheme = createTheme({
   palette: {
@@ -47,7 +48,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <React.StrictMode>
           <AuthProvider>
             <ToastContainer />
-            <App />
+            <GoogleReCaptchaProvider reCaptchaKey={constants.RECAPTCHA_SITE_KEY}>
+              <App />
+            </GoogleReCaptchaProvider>
           </AuthProvider>
           <ReactQueryDevtools initialIsOpen />
         </React.StrictMode>

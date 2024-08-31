@@ -3,8 +3,8 @@ import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mu
 import { FcManager, FcKey } from "react-icons/fc";
 import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
-import { constants } from "@utils/constants";
 import "./Login.scss";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 type LoginTypes = {
   isLoginOpen: boolean;
@@ -12,7 +12,25 @@ type LoginTypes = {
 };
 
 export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
+  const [token, setToken] = useState<string | null>(null);
+
   const { login } = useContext(AuthContext);
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log("Execute recaptcha not yet available");
+      return;
+    }
+
+    const token = await executeRecaptcha("login");
+    setToken(token);
+  }, [executeRecaptcha]);
+
+  useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
 
   const handleLoginClose = () => {
     setLoginOpen(!isLoginOpen);
