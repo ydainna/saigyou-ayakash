@@ -37,8 +37,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
     });
   };
 
-  console.log(constants.RECAPTCHA_SITE_KEY);
-
   return (
     <div>
       <Modal
