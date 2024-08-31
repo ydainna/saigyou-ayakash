@@ -3,6 +3,7 @@ import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mu
 import { FcManager, FcKey } from "react-icons/fc";
 import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
+import ReCAPTCHA from "react-google-recaptcha";
 import "./Login.scss";
 
 type LoginTypes = {
@@ -68,6 +69,7 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <Button variant="text" type="submit">
               Connexion
             </Button>
+            <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY as string} />
           </Box>
         </Fade>
       </Modal>
