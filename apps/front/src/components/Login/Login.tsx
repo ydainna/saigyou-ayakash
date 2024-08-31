@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mui/material";
 import { FcManager, FcKey } from "react-icons/fc";
-import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
 import { constants } from "@utils/constants";
@@ -15,13 +15,6 @@ type LoginTypes = {
 export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
   const { login } = useContext(AuthContext);
 
-  const [token, setToken] = useState("");
-  const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
-
-  const setTokenFunc = (getToken: any) => {
-    setToken(getToken);
-  };
-
   const handleLoginClose = () => {
     setLoginOpen(!isLoginOpen);
   };
@@ -30,7 +23,7 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries()) + token;
+    const data = Object.fromEntries(formData.entries());
     AuthService.login(data).then((response: any) => {
       handleLoginClose();
       login(response.displayName);
@@ -77,9 +70,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <Button variant="text" type="submit">
               Connexion
             </Button>
-            <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}>
-              <GoogleReCaptcha onVerify={setTokenFunc} refreshReCaptcha={refreshReCaptcha} />
-            </GoogleReCaptchaProvider>
           </Box>
         </Fade>
       </Modal>
