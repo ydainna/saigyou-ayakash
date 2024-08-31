@@ -1,9 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Box, Modal, Fade, Input, InputAdornment, InputLabel, Button } from "@mui/material";
 import { FcManager, FcKey } from "react-icons/fc";
 import AuthService from "@services/AuthService";
 import { AuthContext } from "./../../auth/AuthContext";
-import ReCAPTCHA from "react-google-recaptcha";
 import { constants } from "@utils/constants";
 import "./Login.scss";
 
@@ -72,7 +71,6 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <Button variant="text" type="submit">
               Connexion
             </Button>
-            <ReCAPTCHA sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} />
           </Box>
         </Fade>
       </Modal>
