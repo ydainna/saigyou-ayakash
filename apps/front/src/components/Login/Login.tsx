@@ -31,7 +31,7 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    AuthService.login(data).then((response: any) => {
+    AuthService.login(data, token).then((response: any) => {
       handleLoginClose();
       login(response.displayName);
     });

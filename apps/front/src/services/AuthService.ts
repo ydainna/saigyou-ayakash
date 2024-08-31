@@ -19,6 +19,7 @@ AuthService.login = async (data: any) => {
     data: {
       username: data.username,
       password: forge.md.sha256.create().update(data.password).digest().toHex(),
+      token: data.token,
     },
   });
   return res.data;
