@@ -69,7 +69,7 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <Button variant="text" type="submit">
               Connexion
             </Button>
-            <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY as string} />
+            <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY || ""} theme="dark" />
           </Box>
         </Fade>
       </Modal>
