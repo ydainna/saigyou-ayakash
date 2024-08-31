@@ -70,7 +70,7 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
             <Button variant="text" type="submit">
               Connexion
             </Button>
-            <ReCAPTCHA sitekey={constants.RECAPTCHA_SITE_KEY} theme="dark" />
+            <ReCAPTCHA sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} />
           </Box>
         </Fade>
       </Modal>
