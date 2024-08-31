@@ -14,6 +14,7 @@ import "@assets/styles/Mui/Alerte.scss";
 import "@assets/styles/Mui/Datatable.scss";
 import "@assets/styles/Mui/Input.scss";
 import "@assets/styles/Mui/Tooltip.scss";
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
