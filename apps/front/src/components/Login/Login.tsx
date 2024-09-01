@@ -41,7 +41,7 @@ export default function Login({ isLoginOpen, setLoginOpen }: LoginTypes) {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    data.recaptcha = token ?? "";
+    data.token = token ?? "";
     AuthService.login(data).then((response: any) => {
       handleLoginClose();
       login(response.displayName);

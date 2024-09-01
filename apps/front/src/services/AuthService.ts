@@ -19,7 +19,7 @@ AuthService.login = async (data: any) => {
     data: {
       username: data.username,
       password: forge.md.sha256.create().update(data.password).digest().toHex(),
-      recaptcha: data.recaptcha,
+      token: data.token,
     },
   });
   return res.data;

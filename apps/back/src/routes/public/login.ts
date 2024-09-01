@@ -13,7 +13,7 @@ export const initLoginRoutes = async (server: Server) => {
         payload: Joi.object({
           username: Joi.string().required(),
           password: Joi.string().required(),
-          recaptcha: Joi.string().required(),
+          token: Joi.string().required(),
         }),
       },
       auth: false,
@@ -26,16 +26,18 @@ export const initLoginRoutes = async (server: Server) => {
         password: payload.password,
       });
 
-      // Recaptcha
-      const recaptcha = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${payload.recaptcha}`,
-        {
-          method: "POST",
-        }
-      ).then((res) => res.json());
+      let recaptcha;
 
-      if (!recaptcha.success) {
-        throw Boom.badRequest("Recaptcha invalide !");
+      try {
+        const response = await fetch(
+          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${payload.recaptcha}`,
+          {
+            method: "POST",
+          }
+        );
+        recaptcha = await response.json();
+      } catch (error) {
+        console.error("Error verifying reCAPTCHA:", error);
       }
 
       if (!user) {
