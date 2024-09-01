@@ -29,15 +29,20 @@ export const initLoginRoutes = async (server: Server) => {
       let recaptcha;
 
       try {
-        const response = await fetch(
-          `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${payload.recaptcha}`,
-          {
-            method: "POST",
-          }
-        );
-        recaptcha = await response.json();
+        const formDatas = new FormData();
+        formDatas.append("secret", process.env.RECAPTCHA_SECRET_KEY || "");
+        formDatas.append("response", payload.recaptcha);
+
+        const recaptcha = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+          method: "POST",
+          body: formDatas,
+        }).then((res) => res.json());
+
+        if (!recaptcha.success) {
+          throw Boom.unauthorized("reCAPTCHA invalide !");
+        }
       } catch (error) {
-        console.error("Error verifying reCAPTCHA:", error);
+        throw Boom.badImplementation("Erreur lors de la validation du reCAPTCHA.");
       }
 
       if (!user) {
