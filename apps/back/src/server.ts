@@ -89,10 +89,10 @@ export const init = async (): Promise<Server> => {
   await Database.connect();
 
   // Sentry
-  Sentry.init({
+  /*Sentry.init({
     dsn: "https://cebb6018536749e08fbaa19b0e501208@o4504728954470400.ingest.sentry.io/4504730904625152",
     tracesSampleRate: 1.0,
-  });
+  });*/
 
   return server;
 };
