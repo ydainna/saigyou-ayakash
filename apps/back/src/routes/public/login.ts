@@ -55,7 +55,7 @@ export const initLoginRoutes = async (server: Server) => {
 
       const data = {
         displayName: user.displayName,
-        message: "Vous êtes désormais êtes connecté.",
+        message: "Vous êtes désormais connecté.",
       };
 
       return h.response(data).code(200);
