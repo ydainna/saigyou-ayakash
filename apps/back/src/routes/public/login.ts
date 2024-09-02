@@ -26,12 +26,10 @@ export const initLoginRoutes = async (server: Server) => {
         password: payload.password,
       });
 
-      let recaptcha;
-
       try {
         const formDatas = new FormData();
         formDatas.append("secret", process.env.RECAPTCHA_SECRET_KEY || "");
-        formDatas.append("response", payload.recaptcha);
+        formDatas.append("response", payload.token);
 
         const recaptcha = await fetch("https://www.google.com/recaptcha/api/siteverify", {
           method: "POST",
