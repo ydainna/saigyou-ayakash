@@ -70,7 +70,6 @@ To **run this project**, you will **need** to add the following environment vari
 
 **front** :
 `VITE_API_BASE_URL`
-`SENTRY_AUTH_TOKEN`
 
 **back** :
 `MONGODB_URL`
@@ -100,7 +99,6 @@ Front dependencies :
 - [react-toastify](https://fkhadra.github.io/react-toastify/introduction)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-mui-fileuploader](https://github.com/rouftom/react-mui-fileuploader)
-- [sentry](https://sentry.io)
 - [luxon](https://moment.github.io/luxon/#/)
 
 ## 
@@ -115,7 +113,6 @@ Back dependencies :
 - [mongoose](https://mongoosejs.com/)
 - [uuid](https://github.com/uuidjs/uuid)
 - [cross-env](https://github.com/kentcdodds/cross-env)
-- [sentry](https://sentry.io)
 - [luxon](https://moment.github.io/luxon/#/)
 
 ## Authors
