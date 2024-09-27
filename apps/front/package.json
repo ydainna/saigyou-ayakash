@@ -15,7 +15,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mui/icons-material": "^5.14.18",
-    "@mui/material": "^5.14.18",
+    "@mui/material": "^5.16.7",
     "@tanstack/react-query": "^5.8.4",
     "@tanstack/react-query-devtools": "^5.49.2",
     "axios": "^1.6.2",
