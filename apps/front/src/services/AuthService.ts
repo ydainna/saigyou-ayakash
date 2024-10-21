@@ -5,7 +5,7 @@ const AuthService: any = {};
 
 // login
 AuthService.login = async (data: any) => {
-  const res = await api("/admin/login", {
+  const res = await api("/login", {
     method: "POST",
     headers: {
       // application/json is the default content type for axios
@@ -27,7 +27,7 @@ AuthService.login = async (data: any) => {
 
 // logout
 AuthService.logout = async () => {
-  await api("/admin/logout", {
+  await api("/logout", {
     method: "GET",
   });
 };
