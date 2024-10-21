@@ -61,18 +61,18 @@ export default function ModifyFigure({ isModifyFigureOpen, setModifyFigureOpen, 
       >
         <Fade in={isModifyFigureOpen}>
           <Box className="adminBox" component={"form"} name="FigureForm" onSubmit={handleSubmit}>
-            <InputLabel htmlFor="name">Nom</InputLabel>
-            <Input id="name" className="adminInput" onChange={handleChageFigure} value={changeFigure.name} name="name" />
-            <InputLabel htmlFor="origin">Origine</InputLabel>
-            <Input id="origin" className="adminInput" onChange={handleChageFigure} value={changeFigure.origin} name="origin" />
-            <InputLabel htmlFor="maker">Fabricant</InputLabel>
-            <Input id="maker" className="adminInput" onChange={handleChageFigure} value={changeFigure.maker} name="maker" />
-            <InputLabel htmlFor="version">Version</InputLabel>
-            <Input id="version" className="adminInput" onChange={handleChageFigure} value={changeFigure.version} name="version" />
-            <InputLabel htmlFor="price">Prix</InputLabel>
+            <InputLabel htmlFor="figure-name">Nom</InputLabel>
+            <Input id="figure-name" className="adminInput" onChange={handleChageFigure} value={changeFigure.name} name="name" />
+            <InputLabel htmlFor="figure-origin">Origine</InputLabel>
+            <Input id="figure-origin" className="adminInput" onChange={handleChageFigure} value={changeFigure.origin} name="origin" />
+            <InputLabel htmlFor="figure-maker">Fabricant</InputLabel>
+            <Input id="figure-maker" className="adminInput" onChange={handleChageFigure} value={changeFigure.maker} name="maker" />
+            <InputLabel htmlFor="figure-version">Version</InputLabel>
+            <Input id="figure-version" className="adminInput" onChange={handleChageFigure} value={changeFigure.version} name="version" />
+            <InputLabel htmlFor="figure-price">Prix</InputLabel>
             <Input
               inputProps={{ inputMode: "numeric", pattern: "[0-9.]*" }}
-              id="price"
+              id="figure-price"
               className="adminInput"
               onChange={handleChageFigure}
               value={`${changeFigure.price}`}
