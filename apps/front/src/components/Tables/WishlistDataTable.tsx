@@ -95,7 +95,7 @@ export default function WishlistDataTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row: IWish) => {
+                {(rowsPerPage > 0 ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : data).map((row: IWish) => {
                   const createdAt = DateTime.fromJSDate(new Date(row.date)).setLocale("fr").toFormat("d MMMM yyyy");
 
                   return (
