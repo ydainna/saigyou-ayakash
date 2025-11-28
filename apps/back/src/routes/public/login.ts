@@ -49,7 +49,7 @@ export const initLoginRoutes = async (server: Server) => {
 
       // Set auth
       request.cookieAuth.set({
-        id: user.id,
+        id: user._id.toString(),
         scope: user.scope,
       });
 
